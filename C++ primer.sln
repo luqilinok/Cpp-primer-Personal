@@ -53,7 +53,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lianxi1.17", "lianxi1.17\li
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lianxi1.19", "lianxi1.19\lianxi1.19.vcxproj", "{499764BA-6E86-419F-84EF-F66C22243F99}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.5", "1.5\1.5.vcxproj", "{A1C89BED-159C-4698-8487-83C25A0AADE5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.5-1", "1.5\1.5.vcxproj", "{A1C89BED-159C-4698-8487-83C25A0AADE5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.5-2", "1.5-2\1.5-2.vcxproj", "{A9BD8977-1785-4E3A-9C98-DC9D62E977B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -271,6 +273,14 @@ Global
 		{A1C89BED-159C-4698-8487-83C25A0AADE5}.Release|x64.Build.0 = Release|x64
 		{A1C89BED-159C-4698-8487-83C25A0AADE5}.Release|x86.ActiveCfg = Release|Win32
 		{A1C89BED-159C-4698-8487-83C25A0AADE5}.Release|x86.Build.0 = Release|Win32
+		{A9BD8977-1785-4E3A-9C98-DC9D62E977B8}.Debug|x64.ActiveCfg = Debug|x64
+		{A9BD8977-1785-4E3A-9C98-DC9D62E977B8}.Debug|x64.Build.0 = Debug|x64
+		{A9BD8977-1785-4E3A-9C98-DC9D62E977B8}.Debug|x86.ActiveCfg = Debug|Win32
+		{A9BD8977-1785-4E3A-9C98-DC9D62E977B8}.Debug|x86.Build.0 = Debug|Win32
+		{A9BD8977-1785-4E3A-9C98-DC9D62E977B8}.Release|x64.ActiveCfg = Release|x64
+		{A9BD8977-1785-4E3A-9C98-DC9D62E977B8}.Release|x64.Build.0 = Release|x64
+		{A9BD8977-1785-4E3A-9C98-DC9D62E977B8}.Release|x86.ActiveCfg = Release|Win32
+		{A9BD8977-1785-4E3A-9C98-DC9D62E977B8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
