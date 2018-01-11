@@ -65,6 +65,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lianxi1.22", "lianxi1.22\li
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.5.2", "1.5.2\1.5.2.vcxproj", "{2ABAD93D-0EF5-4D79-9C0F-7C5374E66B9F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lianxi1.23", "lianxi1.23\lianxi1.23.vcxproj", "{DAE44114-31B9-4008-923D-454531234E30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -321,6 +323,14 @@ Global
 		{2ABAD93D-0EF5-4D79-9C0F-7C5374E66B9F}.Release|x64.Build.0 = Release|x64
 		{2ABAD93D-0EF5-4D79-9C0F-7C5374E66B9F}.Release|x86.ActiveCfg = Release|Win32
 		{2ABAD93D-0EF5-4D79-9C0F-7C5374E66B9F}.Release|x86.Build.0 = Release|Win32
+		{DAE44114-31B9-4008-923D-454531234E30}.Debug|x64.ActiveCfg = Debug|x64
+		{DAE44114-31B9-4008-923D-454531234E30}.Debug|x64.Build.0 = Debug|x64
+		{DAE44114-31B9-4008-923D-454531234E30}.Debug|x86.ActiveCfg = Debug|Win32
+		{DAE44114-31B9-4008-923D-454531234E30}.Debug|x86.Build.0 = Debug|Win32
+		{DAE44114-31B9-4008-923D-454531234E30}.Release|x64.ActiveCfg = Release|x64
+		{DAE44114-31B9-4008-923D-454531234E30}.Release|x64.Build.0 = Release|x64
+		{DAE44114-31B9-4008-923D-454531234E30}.Release|x86.ActiveCfg = Release|Win32
+		{DAE44114-31B9-4008-923D-454531234E30}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
