@@ -8,5 +8,4 @@ int main()
 	std::string book("0-201-78345-X");  //book通过一个string字面值初始化
 	system("pause");
 	return 0;
-
 }
