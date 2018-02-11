@@ -1,0 +1,9 @@
+std::string global_str;  string类型本身接受无参数的初始化方式，所以无论变量定义在函数内还是函数外都被默认初始化为空串；
+内置类型int，变量global_int定义在所有函数整体之外，根据规则，global_int默认初始化为0
+对于函数
+int main()
+{
+	int local_int;
+	std::string local str;
+}
+来说，local_int定义在main函数之内，将不被初始化如果程序试图拷贝或输出未初始化的变量，将遇到一个未定义的奇异值。
