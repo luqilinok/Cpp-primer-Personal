@@ -131,6 +131,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lianxi2.16", "lianxi2.16\li
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lianxi2.17", "lianxi2.17\lianxi2.17.vcxproj", "{91F425E6-608C-4614-A821-B3A090641E1B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2.3.2", "2.3.2\2.3.2.vcxproj", "{69CFC845-FFA1-46A9-BB7A-955EE11E6B5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -651,6 +653,14 @@ Global
 		{91F425E6-608C-4614-A821-B3A090641E1B}.Release|x64.Build.0 = Release|x64
 		{91F425E6-608C-4614-A821-B3A090641E1B}.Release|x86.ActiveCfg = Release|Win32
 		{91F425E6-608C-4614-A821-B3A090641E1B}.Release|x86.Build.0 = Release|Win32
+		{69CFC845-FFA1-46A9-BB7A-955EE11E6B5B}.Debug|x64.ActiveCfg = Debug|x64
+		{69CFC845-FFA1-46A9-BB7A-955EE11E6B5B}.Debug|x64.Build.0 = Debug|x64
+		{69CFC845-FFA1-46A9-BB7A-955EE11E6B5B}.Debug|x86.ActiveCfg = Debug|Win32
+		{69CFC845-FFA1-46A9-BB7A-955EE11E6B5B}.Debug|x86.Build.0 = Debug|Win32
+		{69CFC845-FFA1-46A9-BB7A-955EE11E6B5B}.Release|x64.ActiveCfg = Release|x64
+		{69CFC845-FFA1-46A9-BB7A-955EE11E6B5B}.Release|x64.Build.0 = Release|x64
+		{69CFC845-FFA1-46A9-BB7A-955EE11E6B5B}.Release|x86.ActiveCfg = Release|Win32
+		{69CFC845-FFA1-46A9-BB7A-955EE11E6B5B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
