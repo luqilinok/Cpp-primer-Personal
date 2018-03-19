@@ -38,7 +38,7 @@ inline bool operator==(const Sales_data &lhs, const Sales_data &rhs)
 	return lhs.units_sold == rhs.units_sold&&
 		lhs.sellingprice == rhs.sellingprice&&
 		lhs.saleprice == rhs.saleprice &&
-		lhs.isbn == rhs.isbn();
+		lhs.isbn() == rhs.isbn();
 }
 inline bool operator !=(const Sales_data &lhs, const Sales_data &rhs)
 {
