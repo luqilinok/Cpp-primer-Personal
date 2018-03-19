@@ -258,3 +258,13 @@ decltype和auto的区别在于：
 ex2_39
 
 该程序无法编译通过，原因是缺少了一个分号，因为类体后面可以紧跟变量名以表示对该类型对象的定义，所以在类体右侧表示结束的花括号之后必须写一个分号。
+
+
+ex2_40
+
+struct Sales_data{
+	std::string bookNO;  //书籍编号
+	unsigned units_sold =0;  //销售量
+	double sellingprice =0.0;  //实售价
+	double discount=0.0  //折扣
+}
