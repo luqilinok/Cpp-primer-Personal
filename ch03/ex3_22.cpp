@@ -1,25 +1,24 @@
-#include<iostream>
-#include<vector>
-#include<string>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cctype>
 
-using namespace std;
+using std::vector; 
+using std::string; 
+using std::cout; 
+using std::cin; 
+using std::isalpha;
 
 int main()
 {
 	vector<string> text;
-	string s; 
-	//利用getline读取一句话，直接回车产生一个空串，表示段落结束
-	while (getline(cin,s))
+	for (string line; getline(cin, line); text.push_back(line));
+
+	for (auto& word : text)
 	{
-		text.push_back(s);  //逐个添加到text中
-	}
-	for (auto it=text.begin();it!=text.end()&&!it->empty();it++)  //利用迭代器遍历全部字符串，遇空串停止循环
-	{
-		for (auto it2=text.begin();it!=text.end()&&!it->empty();it2++)  //利用迭代器遍历当前字符串
-		{
-			*it2 = toupper(*it2);  //利用toupper改写成大写形式
-		}
-		cout << *it << endl;
+		for (auto& ch : word)
+			if (isalpha(ch)) ch = toupper(ch);
+		cout << word << " ";
 	}
 
 	system("pause");
