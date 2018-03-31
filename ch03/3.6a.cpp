@@ -14,7 +14,7 @@ int main()
 		//q指向4个整数数组的首元素
 		for (auto q=*p;q != *p+4 ; ++q)
 		{
-			cout << *q << " ";
+			cout << *q << ' ';
 		}
 		cout << endl;
 	}
