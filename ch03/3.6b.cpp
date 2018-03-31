@@ -13,7 +13,7 @@ int main()
 		//q指向内层数组的首元素
 		for (auto q = begin(*p); q != end(*p); ++q)
 		{
-			cout << *q << " ";
+			cout << *q << ' ';
 		}
 	}
 
