@@ -173,3 +173,17 @@ ex4_32
 ex4_33
 
 根据优先级表可以知道，条件运算符的优先级低于递增/递减运算符，但高于逗号运算符（逗号运算符是所有运算符中优先级最低的），所以原表达式等价于:(someValue?++x,++y:--x),--y,求值过程是先判断someValue是否为真，如果为真，则依次执行x和y的递增操作，最后执行--y，如果someValue为假，则执行--x和--y的操作。
+
+
+ex4_34
+
+(a)if的条件应该是一个布尔值，所以float类型的变量fval自动转化成布尔值，转换规则是：所有非零的数转化为true，0转换为false；
+(b)ival转换为float类型，然后与fval求和转换成double类型；
+(c)cval执行整形提升，转换为int类型，与ival相乘后转化为double类型，最后在与dval相加。
+
+ex4_35
+
+（a）'a'被提升为int型，与3相加的结果再转换为char型，并赋值给cval；
+（b）ival转换为double类型，与1.0相乘的结果也是double类型，ui转换成double类型后与乘法得到的结果相减，最终的结果转化成float类型，并赋值给fval。
+（c）ui转化成float，与fval相乘后的结果转化成double类型，再赋值给dval。
+（d）ival转化成float类型与fval相加，得到的结果转化为dval，再与dval相加后的结果转化为char类型。
