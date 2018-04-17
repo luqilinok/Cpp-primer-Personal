@@ -26,3 +26,27 @@ ex5_4
                   while(status=find(word)){/*....*/}
                   if(!status){/*...*/}
                   
+ex5_7
+(a).ival1=ival2这条语句没有用分号结束，应该修改为：
+          if(ival1!=ival2)
+             ival1=ival2;
+          else ival1=ival2=0;
+(b) 如果occurs=1也是if循环语句中的句子，则应该用花括号括起来作为一个语句块才行，应修改为：
+              if(ival<minval)
+              {
+                minval=ival;
+                occurs=1;
+              }
+(c)ival仅仅是定义在第一个if语句中的变量，如果想在第二个if语句中也使用该变量，那么，该变量应该定义在两个if语句之外，应修改为：
+               int ival;
+               if(ival=get_value())
+                  cout<<"ival = "<<ival<<endl;
+               if(!ival)
+                  cout<<"ival=0\n";
+(d)这段语句的原意是想判断ival的值是否为0，而这段程序的真正含义是将0赋值给ival，那么条件永远都不会满足，应修改为：
+                if(ival == 0)
+                 ival=get_value();
+ ex5_8
+ 
+ 悬垂else是指当程序中的if分支多于else分支时，如何为else寻找与之匹配的if分支的问题
+ C++规定，else与离它最近的尚未匹配的if匹配，从而消除了二义性。
