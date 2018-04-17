@@ -10,4 +10,19 @@ ex5_3
 
 将while循环进行修改后，while循环会变成：while（val<=10）
                                       sum+=val,++val
-可以发现，经过修改后的代码没有一开始带有花括号的代码清晰，可读性也变差了
+可以发现，经过修改后的代码没有一开始带有花括号的代码清晰，可读性也变差了。
+
+ex5_4
+
+(a)这段程序的本意是定义一个string::iterator类型的对象iterator，并判断其是否到达s的末尾，如果还没有到达末尾，那么就执行循环体内的内容；但是这段程序是非法的：因为其他代码也需要访问控制变量时，变量需要定义在语句的外部，所以（a）的错误是：iter变量未初始化，且需要定义在语句的外部，应该修改为：
+                  string::iterator iter=s.begin();
+                  while(iter!=s.end())
+                  {
+                    ++iter;
+                    /*...*/
+                  }
+(b)status定义在while循环中，所以作用域在while的花括号内，if语句中使用的status是未定义的，所以这段程序是非法的，应改为：
+                  bool status;
+                  while(status=find(word)){/*....*/}
+                  if(!status){/*...*/}
+                  
