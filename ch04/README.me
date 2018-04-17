@@ -187,3 +187,19 @@ ex4_35
 （b）ival转换为double类型，与1.0相乘的结果也是double类型，ui转换成double类型后与乘法得到的结果相减，最终的结果转化成float类型，并赋值给fval。
 （c）ui转化成float，与fval相乘后的结果转化成double类型，再赋值给dval。
 （d）ival转化成float类型与fval相加，得到的结果转化为dval，再与dval相加后的结果转化为char类型。
+
+ex4_36
+
+因为题目要求执行整数类型的乘法，所以要将double类型的d执行强制类型转换为int型，所以表达式如下：
+     i*=static_cast<int>(d);
+
+ex4_37
+
+(a) pv=static_cast<void*>(const_cast<string*>(ps));
+(b)i=static_cast<int>(*pc);
+(c)pv=static_cast<void*>(&d);
+(d)pc=static_cast<char*>(pv);
+
+ex4_38
+
+把j/i的值强制类型转换成double，然后赋值给slope。
