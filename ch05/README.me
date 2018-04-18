@@ -50,3 +50,73 @@ ex5_7
  
  悬垂else是指当程序中的if分支多于else分支时，如何为else寻找与之匹配的if分支的问题
  C++规定，else与离它最近的尚未匹配的if匹配，从而消除了二义性。
+
+ex5_13
+
+(a)在case语句的后面没有添加break语句；应修改为：
+             unsigned aCnt=0,eCnt=0,iouCnt=0;
+             char ch=next_text();
+             switch(ch)
+             {
+                case'a':
+                ++aCnt;
+                break;
+                case'e':
+                ++eCnt;
+                break;
+                default:
+                ++iouCnt;
+                break;
+             }
+(b)错误1.在case分支中定义并初始化了变量ix，
+   错误2.在default分支中使用了该变量。
+   修改办法：把ix的定义放在switch语句之前：
+         unsigned index=some_value();
+         int ix;
+         switch(index)
+         {
+            case1:
+            ix=get_value();
+            ivex[ix]=index;
+            break;
+            default:
+            ix=ivec.size()-1;
+            ivec[ix]=index;
+         }
+(c)的错误原因是在同一个case中放置了多个值，而C++规定一个case标签只能对应一个值，修改如下：
+    unsigned evenCnt=0,oddCnt=0;
+    int digit=get_num()%10;
+    switch(digit)
+    {
+         case 1:
+         case 3:
+         case 5:
+         case 7:
+         case 9:
+            oddCnt++;
+            break;
+         case 2:
+         case 4:
+         case 6:
+         case 8:
+         case 10:
+             evencnt++;
+             break;
+    }
+(d)的错误原因在于case标签的内容使用了变量，C++规定，case标签的内容只能使用整形常量表达式，所以应该将ival、jval、kval前面加上常量const来进行修饰
+        const unsigned ival=512,jval=1024,kval=4096;
+        unsigned bufsize;
+        unsigned swt=get_bufCnt();
+        switch(swt)
+        {
+                case ival:
+                  bufsize=ival*sizeof(int);
+                  break;
+                case jval:
+                  bufsize=jval*sizeof(int);
+                  break;
+                case kval:
+                  bufsize=kval*sizeof(int);
+                  break;
+                  
+       }
