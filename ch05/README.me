@@ -148,10 +148,23 @@ ex5_16
 
 ex5_18
 
-应该将循环体的内容用花括号括起来，修改后的程序是：
+（a）应该将循环体的内容用花括号括起来，修改后的程序是：
      do{
             int v1,v2;
             cout<<"Please enter two numbers to sum:";
             if(cin>>v1>>v2)
                 cout<<"Sum is:"<<v1+v2<<endl;
-     }while(cin);
+     }while(cin);
+（b）因为do-while循环不允许在条件部分定义变量，所以这段程序是错误的，应进行如下修改：
+                  int ival;
+                  do
+                  {
+                      ival=get_response()
+                  }while(ival);
+ (c)的错误也是在do-while循环内部定义了变量，应进行如下修改：
+                 int ival;
+                 do
+                 {
+                    ival=get_response();
+                 }while(ival);
+ 
