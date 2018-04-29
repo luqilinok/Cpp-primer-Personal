@@ -4,7 +4,7 @@
 using namespace std;
 using std::string;
 
-bool HasUpper(const string& str)
+bool HasUpper(const string& str)   //因为判断string对象中是否含有大写字母，无需修改形参的值，因此将其设为常量引用类型
 {
 	for (auto c : str)
 	{
@@ -20,7 +20,7 @@ bool HasUpper(const string& str)
 	
 }
 
-void ChangeToLower(string& str)
+void ChangeToLower(string& str)  //该函数需要修改形参的内容，所以要将其设定为非常量引用类型
 {
 	for (auto &c:str)   //如果想改变string对象中字符的值，必须把循环变量定义成引用类型
 	{
