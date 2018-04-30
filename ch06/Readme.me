@@ -76,3 +76,12 @@ ex6_21
       for(size_t i=0;i!=10;++i)
         cout<<ia[i]<<endl;
    }
+
+ex6_24
+
+根据数组的性质可知不能拷贝数组，所以不能用值传递的方式使用数组参数，这段代码犯的错误就是用值传递的方式使用了数组的参数，应该进行如下修改：
+        void print(const int (&ia)[10])
+        {
+         for(size_t i=0;i!=10;++i)
+         cout<<ia[i]<<endl;
+        }
