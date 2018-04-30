@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int compare(const int val, const int *p)
+int compare(const int val, const int *p)   //因为在函数中指针只是进行比较操作，没有修改指针的值，所以指针的类型应该是const int*
 {
 	return(val > *p) ? val : *p;
 }
