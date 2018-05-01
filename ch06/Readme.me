@@ -134,3 +134,13 @@ ex6_37
 使用decltype的引用声明为:
      string str[10];
      decltype(str)&func( )
+
+ex6_38
+
+修改后的函数为：
+         int odd[]={1,3,5,7,9};
+         int even[]={0,2,4,6,8};
+         decltype(odd) &arrPtr(int i)
+         {
+                  return (i%2)?odd:even;
+         }
