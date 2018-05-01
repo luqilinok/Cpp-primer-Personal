@@ -117,3 +117,20 @@ ex6_34
 ex6_35
 
 后置递减运算符用的是减去之前的那个值的副本，因此val--就会一直循环，达不到减一的目的
+
+
+ex6_36
+由题意可知应该使用返回数组引用的那个函数：
+    string(&func () )[10]
+其中func()表示调用func函数无需任何实参，(&func())表示函数的返回结果是一个引用，(&func () )[10]表示引用的对象是一个维度为10的数组，string(&func () )[10]表示数组的元素是string类型
+
+ex6_37
+
+使用类型别名的引用声明为： 
+   typedef string arrT[10];
+   &arrT func( );
+使用尾置返回类型的引用声明为：
+    auto func(string i) -> string(&)[10]
+使用decltype的引用声明为:
+     string str[10];
+     decltype(str)&func( )
