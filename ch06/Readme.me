@@ -90,3 +90,7 @@ ex6_28
 
 在包含Errcode的版本中，循环elem的初始值是initializer<string>,所以说elem的类型是const string类型的，使用引用的原因在189页：避免拷贝较长的字符串
 使用常量的原因是因为只需要读取字符串，并不需要修改它，所以使用常量
+
+ex6_29
+
+在范围for语句中使用initializer_list对象不需要将循环控制变量声明为引用类型，因为initializer_list的元素永远是常量值，无法修改，又因为只有修改元素的时候才应该将循环控制变量声明称引用类型，因此说在范围for语句中使用initializer_list对象不需要讲循环控制变量声明为引用类型
