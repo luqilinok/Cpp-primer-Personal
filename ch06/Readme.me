@@ -85,3 +85,8 @@ ex6_24
          for(size_t i=0;i!=10;++i)
          cout<<ia[i]<<endl;
         }
+
+ex6_28
+
+在包含Errcode的版本中，循环elem的初始值是initializer<string>,所以说elem的类型是const string类型的，使用引用的原因在189页：避免拷贝较长的字符串
+使用常量的原因是因为只需要读取字符串，并不需要修改它，所以使用常量
