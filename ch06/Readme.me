@@ -188,3 +188,10 @@ ex6_46
 
 isShorter函数不能定义成constexpr函数，因为constexpr应该满足如下条件：1.函数的返回类型和所有的形参类型都必须是字面值类型（算术类型、引用、指针）2.有且只有一条return语句
 isShorter函数虽然只有一条return语句，但是它的形参是string类型的，不是字面值类型的，所以不行
+
+ex6_48
+
+while循环的含义是当用户输入一个字符串直到这个字符串是sought时为止
+这段循环对assert的使用是不合理的，因为当用户输入字符串s时，assert中的expr总是有数据（不为0），所以assert什么也不做
+应进行如下修改：
+assert(s==sought)
