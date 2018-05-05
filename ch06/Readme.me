@@ -223,5 +223,6 @@ ex6_54
 根据题意首先声明一个含有2个int形参且返回int类型的函数声明：
      int f(int ,int)
 再声明一个vector对象，令其元素是指向该函数的指针：
-     vector<decltype(f) *> fp
+     typedef decltype(f) fp;
+     vector<fp*> v;
  
