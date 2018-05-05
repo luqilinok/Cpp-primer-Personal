@@ -4,7 +4,7 @@
 using namespace std;
 
 
-struct Sale_data
+struct Sales_data
 {
 	std::string bookNo;      //书籍编号
 	std::string bookName;    //书籍名称
