@@ -1,0 +1,15 @@
+ex7_5
+
+#include<string>
+
+class Person
+{
+private:
+	std::string name;
+	std::string address;
+public:
+	std::string getName() const { return name; };
+	std::string getAddress() const { return address; };
+};
+
+这些函数应该是const类型的，因为无论是返回姓名还是地址，都不需要改变内容，所以将其定义成const类型的
