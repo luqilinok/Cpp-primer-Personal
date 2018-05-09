@@ -1,9 +1,13 @@
 #include<string>
 
-class Person
+class MyClass
 {
-	private:
-		std::string name;
-		std::string address;
-};
+public:
+	string getName() const { return Name; }
+	string getAddress() const { return Address; }
 
+private:
+	string Name;
+	string Address;
+
+};
