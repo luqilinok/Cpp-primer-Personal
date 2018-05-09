@@ -1,6 +1,6 @@
 #include<string>
 
-class MyClass
+class Person
 {
 	private:
 		std::string name;
