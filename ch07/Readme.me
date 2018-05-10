@@ -23,3 +23,9 @@ ex7_8
 ex7_10
 
 因为read函数的返回类型是引用类型，所以read(cin,data1)的返回值可以继续作为外层read函数的实参来使用。该条件检验读入的data1和data2的过程是否正确，如果正确，则条件满足，否则，条件不满足
+
+ex7_14
+
+使用初始值列表的构造函数是：
+  Sales_data(const std::string &book)
+  	:bookNo(book),units_sold(0),sellingprice(0),saleprice(0),discount(0){ }
