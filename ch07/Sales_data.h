@@ -11,7 +11,7 @@ struct Sales_data
 	Sales_data(const std::string &s,unsigned n,double p):  //以下两行：一个const string&，表示ISBN编号，一个unsigned，表示售出的图书数量，一个double，表示图书的售出价格
 		bookNo(s),units_sold(n),revenue(p*n) { } //花括号之前的部分叫做构造函数初始值列表，作用是为新创建的对象的一个或几个成员函数赋值
 	
-	Sales_data(std::istream &is);   //一个istream&，从中读取一条交易信息
+	Sales_data(std::istream &is) { read(is, *this); }//一个istream&，从中读取一条交易信息
 
 
 	std::string isbn() const { return bookNo; };
@@ -40,10 +40,7 @@ double Sales_data::avg_price() const
 
 
 
-inline Sales_data::Sales_data(std::istream &is)
-{
-	read(is, *this);  //read函数的作用是从is中读取一条交易信息，然后存入this对象中
-}
+
 
 Sales_data& Sales_data::combine(const Sales_data& rhs)
 {
