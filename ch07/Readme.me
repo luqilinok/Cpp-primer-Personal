@@ -29,3 +29,43 @@ ex7_14
 使用初始值列表的构造函数是：
   Sales_data(const std::string &book)
   	:bookNo(book),units_sold(0),sellingprice(0),saleprice(0),discount(0){ }
+
+ex7_15
+一个类可以包含0个或多个访问说明符，而且对于访问说明符能出现多少次也没有限定；作为接口的一部分，构造函数和一部分成员函数应该定义在public说明符之后，而数据成员和作为实现的部分函数应该紧跟在private说明符之后
+
+ex7_16
+
+class 和 struct都可以用来声明类，它们大部分功能都相似，根本区别在于：
+   使用class时，类中的成员都默认是private属性的，而使用struct时，结构体中的成员默认都是public属性的
+   
+ex7_17
+
+封装、继承、多态是类的三个特性；封装简单来说就是隐藏了类的实现细节，即封装保护类的成员不能被随意访问的能力，
+封装实现了类的接口和实现的分离，隐藏了类的实现细节，用户只能接触到类的接口。
+
+优点：
+
+隐藏类的实现细节；
+让使用者只能通过程序规定的方法来访问数据；
+可以方便的加入存取控制语句，限制不合理操作；
+
+类自身的安全性提升，只能被访问不能被修改；
+
+类的细节可以随时改变，不需要修改用户级别的代码；
+
+ex7_19
+
+
+ 根据C++的规定：作为接口的一部分，构造函数和一部分成员函数应该定义在public说明符之后，而数据成员和作为实现的部分函数应该紧跟在private说明符之后
+ 所以在Person类中，构造函数：
+ 	Person() = default;
+	Person(const std::string &sname, const std::string saddress) :name(sname), address(saddress) { }
+	Person(std::istream &is) { read(is, *this); }
+和部分成员函数：
+	std::string getName() const { return name; }
+	std::string getAddress() const { return address; }
+应该放在public访问说明符之后；
+数据成员：
+	std::string name;
+	std::string address;
+放在private访问说明符之后；
