@@ -4,7 +4,7 @@
 class Sales_data
 {
 public:
-	double average_price() const
+	double avg_price() const
 	{
 		if (units_sold)
 		{
