@@ -24,7 +24,7 @@ public:
 	Screen(pos ht,pos wd):height(ht),width(wd),contents(ht*wd,' '){ }  //2.该构造函数接受宽和高的值，然后将contents初始化成给定数量的空白
 	Screen(pos ht,pos wd,char c):height(ht),width(wd),contents(ht*wd,c){ }  //3.该构造函数接受宽和高的值以及一个字符，该字符作为初始化之后屏幕的内容
 
-	char get() const { return contents[cursor]; }
+	char get() const { return contents[cursor]; }  //读取光标处的字符
 	char get(pos r, pos c) const { return contents[r*width + c]; }
 	inline Screen& move(pos r, pos c);
 	inline Screen& set(char c);
