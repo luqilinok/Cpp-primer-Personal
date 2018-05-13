@@ -143,3 +143,11 @@ Type Exercise::setVal(Type parm)
       	val=parm+initVal();   //此处使用的是类内的initVal
 	return val;
       }
+
+ex7_36
+
+这段程序首先声明了rem，然后再声明base，因此X(int i,int j):base(i),rem(base%j){ }中，实际上是先初始化rem(base%j)，但此时base还没有定义，因此这段程序是错误的。所以要进行如下的修改：
+	struct X{
+		X(int i,int j):base(i),rem(base%j){ }
+		int base,rem;
+	};
