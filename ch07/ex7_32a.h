@@ -11,7 +11,7 @@ public:
 	//Window_mgr::clear必须在Screen类之前被声明
 	friend void Window_mgr::clear(ScreenIndex);
 
-	using pos = std::string::size_type;
+	using pos = std::string::size_type;  //使用类型别名等价地声明一个类型名字
 	Screen() = default;
 	Screen(pos ht, pos wd, char c) :height(ht), width(wd), contents(ht*wd, c) { }
 	char get() const
@@ -25,6 +25,7 @@ public:
 		{do_display(os);return *this;}
 	const Screen &display(std::ostream &os) const
 		{do_display(os);return *this;}
+	void some_member() const;
 
 private:
 	pos cursor = 0;
@@ -34,6 +35,7 @@ private:
 	{
 		os << contents;
 	}
+	mutable size_t access_ctr;  //即使在一个const对象内也能被修改
 };
 
 inline
@@ -59,6 +61,11 @@ inline Screen &Screen::set(pos r, pos col, char ch)
 	contents[r*width + col] = ch;  //设置给定位置的新值
 	return *this;                 //将this对象作为左值返回
 }
+void Screen::some_member() const
+{
+	++access_ctr;    //保存一个计数值，用于记录成员函数被调用的次数
+	//该成员需要完成其他工作
+}
 
 class Window_mgr
 {
@@ -70,6 +77,8 @@ public:
 
 
 private:
+	//这个Window_mgr追踪Screen
+	//默认情况下，一个Window_mgr包含一个标准尺寸的空白Screen
 	std::vector<Screen> screens{ Screen(24,80,' ') };
 };
 
