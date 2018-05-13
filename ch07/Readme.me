@@ -107,3 +107,39 @@ ex7_33
     {
     	return height*width;
     }
+
+ex7_34
+
+因为在类中，名字的查找是自上而下，由内到外的，因此如果把Screen类的pos的typedef放在类的最后一行，那么将出现pos未定义的错误，会报错
+
+ex7_35
+
+#include<iostream>
+#include<string>
+
+typedef string Type;   //声明类型别名Type表示string
+Type initVal();    //声明一个函数initVal，返回类型是Type
+class Exercise
+{
+public:
+	typedef double Type;   //在内层作用域中重新声明类型别名Type表示string
+	Type setVal(Type);     //声明函数setVal,函数的参数和返回值类型都是Type
+	Type initVal();        //在内层作用域重新声明函数initVal，返回类型是Type
+
+private:
+	int val;         //声明私有数据成员val
+};
+//定义函数setVal，此时的Type是外部作用域的
+Type Exercise::setVal(Type parm)
+{
+	val = parm + initVal();   //此处使用的是类内的initVal函数
+	return val;
+}
+其中，在Exercise类的内部，函数setVal和initVal用到的Type都是Exercise类内部声明的类型别名，对应的实际类型是double类型的
+在Exercise类的外部，定义Exercise::setVal函数时形参类型Type用的是Exercise内部定义的别名，对应double；返回类型Type用的是全局作用域的别名，对应string。使用的initVal函数是Exercise类内定义的版本。
+    编译上述程序在setVal的定义处发生错误，此处定义的函数类型是double，但是返回值的类型是string，不匹配，所以应该在定义setVal函数时使用作用域运算符强制指定函数的返回值类型：
+      Exercise::Type Exercise::setVal(Type parm)
+      {
+      	val=parm+initVal();   //此处使用的是类内的initVal
+	return val;
+      }
