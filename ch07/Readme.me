@@ -171,4 +171,32 @@ ex7_39
 
 ex7_40
 
-我就和答案选择一样的吧，选择(a)Book，该类需要的数据成员有：BookName，ISBN,Author，Publisher
+我就和答案选择一样的吧，选择(a)Book，该类需要的数据成员有：BookName，ISBN,Author，Publisher，Price
+#include<iostream>
+#include<string>
+
+
+class Book
+{
+public:
+	Book() = default;
+	Book(const std::string &name, const std::string &I, double pr, const std::string &a, const std::string &p)
+	{
+		BookName = name;
+		ISBN = I;
+		Price = pr;
+		Author = a;
+		Publisher = p;
+	}
+	Book(std::istream &in)
+	{
+		in >> BookName >> ISBN >> Price >> Author >> Publisher;
+	}
+
+private:
+	std::string BookName, ISBN, Author, Publisher;
+	double Price = 0.0;
+};
+
+
+
