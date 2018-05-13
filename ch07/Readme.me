@@ -157,3 +157,14 @@ ex7_37
 Sales_data first_item(cin);   //使用了接受std::istream参数的构造函数Sales_data(std::istream &is) { read(is, *this); },该对象的成员值依赖于用于的输入；
 Sales_data next;   //使用了默认构造函数Sales_data() = default;
 Sales_data last("9-999-99999-9");//使用了接受const string&参数的构造函数Sales_data(const std::string &s) :bookNo(s) { }，其中实参初始化为“9-999-99999-9”，其他几个成员使用类内初始值初始化为0
+
+ex7_38
+
+由题意应该写成：
+	Sales_data(std::istream &is=std::cin){is>>*this;}
+	
+ex7_39
+
+不合法，因为这样编译器就不知道该调用哪个参数进行初始化了；
+官方答案：
+	
