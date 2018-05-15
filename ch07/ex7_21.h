@@ -28,8 +28,7 @@ private:
 	double price = 0.0;  //价格
 };
 //Sales_data接口的非成员组成部分的声明(如果希望类的用户能够调用某个友元函数，必须在友元函数之外再专门对函数进行一次声明，如下所示)
-Sales_data add(const Sales_data&, const Sales_data&);
-std::istream &read(std::istream&, Sales_data&);
-std::ostream &print(std::ostream&, const Sales_data&);
-
+std::istream &read(std::istream &is, Sales_data&item);
+std::ostream &print(std::ostream&os, const Sales_data&item);
+Sales_data add(const Sales_data &lhs, const Sales_data&rhs);
 
