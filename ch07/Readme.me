@@ -198,5 +198,30 @@ private:
 	double Price = 0.0;
 };
 
+ex7_42
+
+首先，含有5个参数的那个函数不应该是委托构造函数，另外两个可以做构造函数，即
+
+#include<iostream>
+#include<string>
 
 
+class Book
+{
+public:
+
+	Book(const std::string &name, const std::string &I, double pr, const std::string &a, const std::string &p)
+	{
+		BookName = name;
+		ISBN = I;
+		Price = pr;
+		Author = a;
+		Publisher = p;
+	}
+	Book():Book("","",0,"",""){ }
+	Book(std::istream &in) :Book() { in >> BookName >> ISBN >> Price >> Author >> Publisher; }
+
+private:
+	std::string BookName, ISBN, Author, Publisher;
+	double Price = 0.0;
+};
