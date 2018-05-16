@@ -261,3 +261,13 @@ ex7_49
 （b）无法编译通过，因为combine函数的参数是一个非常量引用，而s是一个string对象，编译器自动创建的Sales_data临时对象无法传递给combine函数所需要的非常量引用，所以编译失败，应进行如下修改：
 	Sales_data &combine(const Sales_data&)
 （c）无法编译通过，因为该函数声明中含有const，即combine是一个常量成员函数，无法修改数据成员的值
+
+ex7_50
+
+因为关键字explicit只对一个实参的构造函数有效，所以Person类中可以添加explicit关键字的构造函数有：
+	explicit Person(std::istream &is) { read(is, *this); }
+	
+ex7_51
+
+定义为explicit是为了防止隐式的类型转换,string接受的单参数是const char*，即常量字符类型，所以如果我们得到了一个常量字符指针，则把它看成string对象时自然而然的过程，编译器会自动把参数类型转换成类类型，所以无需指定explicit；
+vector接受的单参数是int类型，这个参数的原意是指定vector的容量，所以我们在本来需要vector的地方提供一个int值并且希望这个int值自动的转换成vector，则这个过程显得比较牵强，因此把vector的单参数构造函数定义成explicit更加合理
