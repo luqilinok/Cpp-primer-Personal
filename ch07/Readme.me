@@ -225,3 +225,11 @@ private:
 	std::string BookName, ISBN, Author, Publisher;
 	double Price = 0.0;
 };
+
+ex7_44
+
+这条声明是非法的：这条声明的含义是创建一个vector对象vec，该对象包含10个元素，每个元素的类型都是Nodefault，并且执行默认初始化，但是因为没有在类NoDefault的定义中设计默认构造函数，所以所需的默认初始化过程无法执行，编译器会报错
+
+ex7_45
+
+如果定义的vector的元素类型是C，则声明就是合法的了，因为类C中定义了带参数的默认构造函数，可以完成声明语句所需的默认初始化操作
