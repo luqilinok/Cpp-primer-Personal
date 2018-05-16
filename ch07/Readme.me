@@ -271,3 +271,13 @@ ex7_51
 
 定义为explicit是为了防止隐式的类型转换,string接受的单参数是const char*，即常量字符类型，所以如果我们得到了一个常量字符指针，则把它看成string对象时自然而然的过程，编译器会自动把参数类型转换成类类型，所以无需指定explicit；
 vector接受的单参数是int类型，这个参数的原意是指定vector的容量，所以我们在本来需要vector的地方提供一个int值并且希望这个int值自动的转换成vector，则这个过程显得比较牵强，因此把vector的单参数构造函数定义成explicit更加合理
+
+ex7_52
+
+因为聚合类要求没有类内初始值，所以题目中所给的这段程序片段是错误的，应该去掉初始值，如下所示：
+	struct Sales_data
+{
+	std::string bookNo;
+	unsigned units_sold;
+	double revenue;
+};
