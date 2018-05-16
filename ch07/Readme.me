@@ -281,3 +281,11 @@ ex7_52
 	unsigned units_sold;
 	double revenue;
 };
+
+ex7_54
+
+以set开头的成员不应该加上constexpr，因为constexpr函数必须有返回值，必须有return语句，而set开头的那些成员都是void，即没有返回值，所以不能加上constexpr
+
+ex7_55
+
+因为根据定义，数据成员都是字面值类型的聚合类是字面值常量类.Data的数据成员都是字面值类型的，所以Data类是字面值常量类
