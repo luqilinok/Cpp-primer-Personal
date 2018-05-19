@@ -27,4 +27,7 @@ int main()
 		cout << *it << endl;    //输出vector中的元素
 		++it;
 	}
+	
+	system("pause");
+	return 0;
 }
