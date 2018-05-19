@@ -8,7 +8,6 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 	fstream input(argv[1]);   //打开销售记录文件
-	ofstream output(argv[2]);  //打开输出文件
 	Sales_data total;         //保存销售总量的变量
 	if (read(input, total))  //读取第一条销售记录
 	{
