@@ -13,3 +13,9 @@ ex9_02
 using namespace std;
 
 list<deque<int>> a;
+
+ex9_03
+
+对于构成迭代器范围的迭代器，应该满足如下条件：
+两个迭代器begin和end必须指向同一个容器中的元素，或者是容器最后一个元素之后的位置；
+而且，对begin反复进行递增操作，可以保证到达end（end不在begin的前面）
