@@ -27,3 +27,8 @@ list迭代器不支持<运算只支持递增、递减、==以及！=运算
 ex9_05
 
 为了索引int的vector中的元素，可以使用迭代器类型vector<int>::iterator
+
+ex9_06
+
+如果需要读取string的list中的元素，根据书中写到的“如果需要元素类型，可以使用容器的value_type”这句话，所以应该使用list<string>::value_type;
+如果需要写入list，那么需要非常量的引用类型，所以根据书中的“如果需要元素类型的一个引用，可以使用reference或const_reference”这句话，又因为是写入，所以不能是常量引用，所以用的类型是list<string>::reference
