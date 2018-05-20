@@ -32,3 +32,14 @@ ex9_06
 
 如果需要读取string的list中的元素，根据书中写到的“如果需要元素类型，可以使用容器的value_type”这句话，所以应该使用list<string>::value_type;
 如果需要写入list，那么需要非常量的引用类型，所以根据书中的“如果需要元素类型的一个引用，可以使用reference或const_reference”这句话，又因为是写入，所以不能是常量引用，所以用的类型是list<string>::reference
+
+ex9_09
+
+begin返回的是普通版本的迭代器，可读可写（可以修改）；cbegin返回的const版本的迭代器（不能够修改）
+
+ex9_10
+
+v1是int的vector类型，我们可以修改v1的内容，所以是	vector<int>::iterator;
+v2是int的常量vector类型，内容不可以修改，所以是const vector<int>::iterator;
+根据书中的描述，“当auto与begin或end结合使用的时候，获得的迭代器类型依赖于容器类型”，所以it1是普通迭代器，可以对其进行修改it2是const迭代器，不能对其进行修改；
+又因为“以c开头的版本无论容器的类型是什么，都可以获得const_iterator”，所以it3和it4都是const迭代器
