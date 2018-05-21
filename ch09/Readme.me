@@ -43,3 +43,13 @@ v1是int的vector类型，我们可以修改v1的内容，所以是	vector<int>:
 v2是int的常量vector类型，内容不可以修改，所以是const vector<int>::iterator;
 根据书中的描述，“当auto与begin或end结合使用的时候，获得的迭代器类型依赖于容器类型”，所以it1是普通迭代器，可以对其进行修改it2是const迭代器，不能对其进行修改；
 又因为“以c开头的版本无论容器的类型是什么，都可以获得const_iterator”，所以it3和it4都是const迭代器
+
+ex9_11
+
+.6种创建和初始化vector对象的方法：
+	• 默认初始化:vector<int> ilist1
+	• 拷贝初始化:vector<int> ilist2(ilist1)
+	• 列表初始化:vector<int> ilist={1,2,3}
+	• 迭代器指定范围内拷贝:vector<int> ilist3(ilist.begin()+2,ilist.end()-1)
+	• 默认值初始化:vector<int> ilist(8)
+指定值初始化:vector<int> ilist(7,3)   ilist被初始化为包含7个值为3的int
