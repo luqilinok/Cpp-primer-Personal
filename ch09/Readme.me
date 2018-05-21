@@ -46,10 +46,15 @@ v2是int的常量vector类型，内容不可以修改，所以是const vector<in
 
 ex9_11
 
-.6种创建和初始化vector对象的方法：
+6种创建和初始化vector对象的方法：
 	• 默认初始化:vector<int> ilist1
 	• 拷贝初始化:vector<int> ilist2(ilist1)
 	• 列表初始化:vector<int> ilist={1,2,3}
 	• 迭代器指定范围内拷贝:vector<int> ilist3(ilist.begin()+2,ilist.end()-1)
 	• 默认值初始化:vector<int> ilist(8)
 指定值初始化:vector<int> ilist(7,3)   ilist被初始化为包含7个值为3的int
+
+ex9_12
+
+当接受一个容器创建其拷贝的构造函数时，要求两个容器的类型及元素类型必须匹配
+当接受两个迭代器创建拷贝的构造函数时，不要求容器类型是相同的了，只要能将拷贝的元素转换为要初始化的容器的元素类型即可
