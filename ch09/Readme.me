@@ -61,3 +61,45 @@ ex9_12
 
 ex9_13
 
+因为list<int>和vector<double>容器类型不同、元素类型也不同，所以要执行初始化操作应该采用迭代器范围初始化的方法来构造一个vector<double>,让它的元素值与list<int>完全相同
+
+#include<iostream>
+#include<vector>
+#include<list>
+#include<string>
+
+using std::vector;
+using std::list;
+using namespace std;
+
+int main()
+{
+	list<int> ilist(5, 4);
+	vector<int> ivec(5, 5);
+
+	//从list<int>初始化vector<double>
+	vector<double> dvec(ilist.begin(), ilist.end());
+	for (auto i:ilist)
+	{
+		cout << i << " " << endl;
+	}
+	for (auto d : dvec)
+	{
+		cout << d << " ";
+	}
+
+	//从vector<int>初始化vector<double>
+	vector<double> dvec2(ivec.begin(), ivec.end());
+	for (auto i:ivec)
+	{
+		cout << i << " " << endl;
+	}
+	for (auto d : dvec2)
+	{
+		cout << d << " ";
+	}
+
+	system("pause");
+	return 0;
+}
+
