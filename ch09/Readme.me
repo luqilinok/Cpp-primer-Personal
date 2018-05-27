@@ -163,5 +163,16 @@ vector容器中因为元素在内存中是连续存放的，所以需要capacity
 list中的元素并不是在内存中连续存储的，所以没法用capacity成员函数
 array是固定大小的，capacity没用用处
 
+ex9_39
 
+reserve为svec分配了1024个元素的空间；
+随后，循环会不断的向svec写入字符串，当svec的容量小于1024时，vector的容量不会发生变化，当容量超出1024时，resize操作会向svec末尾添加一个当前字符串数量一半那么多的新字符串，它们的值都是空字符串，若空间不够，会分配足够容纳这些新字符串的内存空间
+
+ex9_40
+
+在vs跑了一遍程序后可以知道，当
+读入256个词时，resize之后容器的capacity是384；
+读入512个词时，resize之后容器的capacity是768；
+读入1000个词时，resize之后容器的capacity是1536；
+读入1048个词时，resize之后容器的capacity是2304；
 
