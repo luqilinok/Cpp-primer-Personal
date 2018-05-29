@@ -1,0 +1,5 @@
+ex10_04
+
+根据书中所讲，accumulate蕴含着一个编程假定，将元素类型加到和的类型上是可行的，即序列中元素的类型必须与第三个参数相匹配或者是能够转换为第三个参数的类型；
+本题中如果v是vector<double>类型的话，就错了，因为accumulate(v.cbegin(),v.cend(),0)表明和是整形的，所以如果v是vector<double>的情况下，accumulate函数会自动将double类型转换成int类型；
+如果想要避免这种情况发生，应该将本题中accumulate函数的第三个参数换成0.0
