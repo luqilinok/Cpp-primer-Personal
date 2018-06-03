@@ -1,3 +1,4 @@
+
 #include<iostream>
 #include<fstream>
 #include<iterator>
@@ -10,11 +11,11 @@ int main(int argc, char *argv[])
 {
 	istream_iterator<int> in_iter(cin);  //创建流迭代器从标准输入中读入整数
 	istream_iterator<int> eof;  //尾后迭代器
-	
+
 	vector<int> vi;
-	while (in_iter!=eof)
+	while (in_iter != eof)
 	{
-		vi.push_back(*in_iter);  //存入vector并递增迭代器
+		vi.push_back(*in_iter++);  //存入vector并递增迭代器
 	}
 
 	sort(vi.begin(), vi.end());
