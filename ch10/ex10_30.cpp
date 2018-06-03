@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	vector<int> vi;
 	while (in_iter!=eof)
 	{
-		vi.push_back(*in_iter);
+		vi.push_back(*in_iter++);
 	}
 	sort(vi.begin(), vi.end());
 
