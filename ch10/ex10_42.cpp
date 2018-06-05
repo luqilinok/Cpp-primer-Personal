@@ -19,10 +19,10 @@ void elimDups(list<string> &words)
 {
 	output_words(words);
 
-	words.sort();
+	words.sort();  //使用其成员函数版本的算法，排序  
 	output_words(words);
 
-	words.unique(words);
+	words.unique(words);  //使用其成员函数版本的算法，删除重复的元素
 	output_words(words);
 }
 
