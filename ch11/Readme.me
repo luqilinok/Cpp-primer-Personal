@@ -35,3 +35,7 @@ ex11_10
 
 有序容器要求关键字类型必须支持比较操作，因此map<vector<int>::iterator,int> m1是可以的，因为vector的迭代器支持比较操作
 反之，map<list<int>::iterator,int> m2是不可以的，因为list是双向链表，不是连续存储的，所以不支持比较操作
+
+ex11_11
+
+因为使用decltype作用于某个函数的时候，它返回函数类型而非指针类型，所以要显示的加上*表明我们需要返回指针类型，所以不用decltype重新定义compare的写法为：typedef bool (*pf)(const Sales_data&lhs,const Sales_data &rhs);或者是using compareType = bool (*)(const Sales_data& lhs, const Sales_data& rhs)；
