@@ -62,3 +62,10 @@ ex11_18
 
 因为当解引用一个关联容器迭代器时，会得到一个类型为容器的value_type的值的引用，对map而言，value_type是一个pair类型，所以本题中要求的求出map_it是pair<const string,size_t>对象的引用，所以map_it的类型是：
 pair<const string,size_t>::iterator
+
+ex11_19
+
+这道练习题考察的是关联容器迭代器的问题，根据题目中的要求，应该写出如下代码：
+using compareType=bool(*)(const Sales_data &lhs,const Sales_data &rhs);
+multiset<Sales_data,compareType> bookstore(compareType);
+multiset<Sales_data,compareType>::iterator c_it=bookstore.begin();
