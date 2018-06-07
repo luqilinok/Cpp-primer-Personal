@@ -69,3 +69,12 @@ ex11_19
 using compareType=bool(*)(const Sales_data &lhs,const Sales_data &rhs);
 multiset<Sales_data,compareType> bookstore(compareType);
 multiset<Sales_data,compareType>::iterator c_it=bookstore.begin();
+
+ex11_21
+
+循环不断从标准输入中读取字符串，直到遇到文件结束或错误
+每次读入一个单词，构造pair{word,0},通过insert操作插入到word_count中，insert返回一个pair，其first成员是一个迭代器，如果单词已经存在，则指向已经存在的元素，否则，指向新插入的元素
+因此，.first会得到这个迭代器，指向word对应的元素，继续使用->second，可获得元素的值的引用，即单词的计数。如果单词是新的，则它的值就是0，若已存在，则值为之前出现的次数，对其进行递增操作，即完成将出现次数加1
+
+ex11_22
+
