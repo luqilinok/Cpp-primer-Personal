@@ -56,3 +56,9 @@ ex11_17
 set的迭代器是const的，只允许访问set中的元素，而不能改变set；set的关键字也是const，只读不改，因此前两个调用试图将vector中的元素复制到set中，是非法的行为；
 
 第三个和第四个迭代器是将c中的元素赋值个v，即将set中的元素赋值给vector，是合法的
+
+，
+ex11_18
+
+因为当解引用一个关联容器迭代器时，会得到一个类型为容器的value_type的值的引用，对map而言，value_type是一个pair类型，所以本题中要求的求出map_it是pair<const string,size_t>对象的引用，所以map_it的类型是：
+pair<const string,size_t>::iterator
