@@ -51,3 +51,8 @@ map<int,int> m,
 auto it=m.begin();
 it->second=0;
 
+ex11_17
+
+set的迭代器是const的，只允许访问set中的元素，而不能改变set；set的关键字也是const，只读不改，因此前两个调用试图将vector中的元素复制到set中，是非法的行为；
+
+第三个和第四个迭代器是将c中的元素赋值个v，即将set中的元素赋值给vector，是合法的
