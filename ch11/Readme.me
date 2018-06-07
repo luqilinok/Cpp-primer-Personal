@@ -78,3 +78,6 @@ ex11_21
 
 ex11_22
 
+对一个map进行insert操作时，元素的类型是pair，即参数类型是pair<string,vector<int>>
+又因为insert返回的值依赖于容器类型和参数。对于不包含重复关键字的容器，添加单一元素的insert返回一个pair，first成员是一个迭代器，指向具有给定关键字的元素，second成员是一个bool值，指出元素是插入成功还是已经存在于容器中，所以返回类型pair如下：
+   pair<map<string,vector<int>>::iterator,bool>
