@@ -43,3 +43,11 @@ ex11_11
 ex11_15
 
 由题意定义出如下map：map<int,vector<int>>,所以，它的mapped_type是vector<int>,key_type是int，value_type是pair<const int,vector<int>>
+
+ex11_16
+
+解引用关联容器的迭代器，得到的是一个value_type的值的引用，因此，对map而言，得到的是一个pair<const key_type,mapped_type>类型的引用，它的first成员保存const关键字，second成员保存值，所以，通过迭代器只能改变second，不能改变first，所以将一个值赋予一个元素为：int
+map<int,int> m,
+auto it=m.begin();
+it->second=0;
+
