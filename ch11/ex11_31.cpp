@@ -5,40 +5,36 @@
 
 using namespace std;
 
-void remove_author(multimap<string, string>&books, const string &author)
+int main()
 {
-	auto pos = books.equal_range(author);  //查找给定作者的范围
-	if (pos.first==pos.second)  //空范围，没有该读者
-	{
-		cout << "没有" << author << "这个作者" << endl << endl;
-	}
-	else
-	{
-		books.erase(pos.first, pos.second);  //删除该作者的所有著作
-	}
-}
+	multimap<string, string> authors{
+	{"alan","DMA"},
+	{"pezy", "Leetcode"},
+	{"alan","CLRS"},
+	{"wang","FTP"},
+	{"pezy","CP5"},
+	{"wang","CPP-Concurrency"}
+	};
 
-void print_books(multimap<string, string> &books)
-{
-	cout << "当前数目包括:" << endl;
-	for (auto book:books)   //遍历所有书籍，打印书籍的作者及名字
+	string author = "pezy";
+	string bookname = "CP5";
+
+	auto found = authors.find(author);
+	auto count = authors.count(author);
+	while (count)
 	{
-		cout << book.first << ",《" << book.second << "》" << endl;
+		if (found->second==bookname)
+		{
+			authors.erase(found);
+			break;
+		}
+		++found;
+		--count;
 	}
-	cout << endl;
-}
-
-int main(int argc,char *argv[])
-{
-	multimap<string, string> books;
-	books.insert({ "金庸","天龙八部" });
-	books.insert({ "金庸","射雕英雄传" });
-	books.insert({ "paul","west fanals" });
-
-	print_books(books);
-	remove_author(books, "张三");
-	remove_author(books, "paul");
-	print_books(books);
+	for (const auto &author:authors)
+	{
+		cout << author.first << " " << author.second << endl;
+	}
 
 	system("pause");
 	return 0;
