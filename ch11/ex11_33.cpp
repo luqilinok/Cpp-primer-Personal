@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 	ifstream input(argv[2]);  //检查是否有输入文件
 	if (!input)
 	{
-		throw runtime_error("no input file");
+		throw runtime_error("no input file"); 
 	}
 
 	word_transform(map_file, input);  //按照规则进行转换
