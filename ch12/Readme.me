@@ -1,0 +1,6 @@
+ex12_01
+
+StrBlob的data成员是一个指向string的vector的shared_ptr，因此StrBlob的赋值不会拷贝vector的内容，而是多个StrBlob对象共享一个（创建于动态内存空间上）的vector对象
+代码第3行创建b2时提供了3个string的列表，因此会创建一个包含3个string的vector对象，并创建一个shared_ptr指向此对象（引用计数为1）
+第4行将b2赋予b1时，创建一个shared_ptr也指向刚才创建的vector对象，引用计数变为2
+因此，第4行向b2添加一个string时，会向两个StrBlob共享的vector中添加此string，最终，在代码结尾，b1和b2均包含4个string
