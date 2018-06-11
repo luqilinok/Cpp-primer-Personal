@@ -4,3 +4,16 @@ StrBlob的data成员是一个指向string的vector的shared_ptr，因此StrBlob�
 代码第3行创建b2时提供了3个string的列表，因此会创建一个包含3个string的vector对象，并创建一个shared_ptr指向此对象（引用计数为1）
 第4行将b2赋予b1时，创建一个shared_ptr也指向刚才创建的vector对象，引用计数变为2
 因此，第4行向b2添加一个string时，会向两个StrBlob共享的vector中添加此string，最终，在代码结尾，b1和b2均包含4个string
+
+ex12_03
+
+push_back和pop_back的含义是向StrBlob对象共享的vector对象添加元素或从中删除元素，因此，不应该为其重载const版本，因为常量StrBlob对象不能够进行修改，也就不能够进行添加和删除操作
+
+ex12_04
+
+check函数是一个私有成员函数，即它只被StrBlob的成员函数调用，不会被用户程序所调用，又因为data_size的成员类型是size_type,这是一个无符号类型，不会产生负数，因此在定义的check函数中，不需要检查i是否大于0
+
+ex12_05
+
+explicit的作用是阻止构造函数进行的隐式转换，所以如果没有编写一个initializer_list explicit，那么StrBlob可以进行隐式转换，即在需要StrBlob的地方可以使用列表进行替代，而且，可以进行拷贝形式的初始化，这令编写程序更为简单
+但是这种隐式转换并不总是好的，因为列表中可能并非都是合法的值，另一方面，对于接受StrBlob的函数，传递给它一个列表，会创建一个临时的StrBlob对象，对其进行列表初始化，，然后将其传递给函数，当函数完成后，此对象被丢弃，再也无法访问了，对于这些情况，我们可以定义显式的构造函数，禁止隐式类类型转换
