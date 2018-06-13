@@ -5,7 +5,7 @@
 #include <string>
 #include <initializer_list>
 #include <memory>
-#include <stdexcept>
+#include <stdexcept>  //处理异常的头文件
 using std::vector; using std::string;
 
 class StrBlobPtr;
