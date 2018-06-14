@@ -68,3 +68,20 @@ ex12_21
 
 这两段代码的功能是完全一样的，但是我认为书中的代码会更好一些，因为书中的代码将合法性检查与元素获取和返回语句分考了，代码更清晰易懂，当执行到第二条语句时，已经能够保证p是存在的vector，curr是合法的位置，可以安全的获取元素并返回，这种清晰的结构有利于修改不同的处理逻辑。
 本题中的版本将合法性检查和元素获取及返回合在一条语句中，不容易读取，也不容易修改
+
+ex12_22
+
+本题中不能将StrBlobPtr绑定到一个const StrBlob是因为构造函数接受一个非const StrBlob对象的引用，所以如果想让StrBlobPtr使用const StrBlob，那么应该让构造函数接受一个const StrBlob对象的引用，并为StrBlob定义能操作const对象的begin和end：
+声明：
+StrBlobPtr begin() const;
+SttrBlobPtr end() const;
+定义：
+inline StrBlobPtr StrBlob::begin() const
+{
+  return StrBlobPtr(*this);
+}
+inline StrBlobPtr StrBlob::end() const
+{
+  auto ret=StrBlobPtr(*this,data->size());
+  return ret;
+}
