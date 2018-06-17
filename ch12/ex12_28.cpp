@@ -14,7 +14,7 @@ void runQueries(ifstream &infile)
 		{
 			break;
 		}
-		print(cout, tq.query(s));
+		print(cout, tq.query(s))<<endl;
 	}
 }
 int main()
