@@ -1,0 +1,42 @@
+#ifndef EX12_27_H
+#define EX12_27_H
+
+
+#include<iostream>
+#include<vector>
+#include<string>
+#include<memory>
+#include<set>
+#include<map>
+
+using namespace std;
+
+class QueryResult;
+
+class TextQuery
+{
+public:
+	friend class QueryResult;
+	using line_no = vector<string>::size_type;
+	TextQuery(ifstream &);
+	QueryResult query(const string&) const;
+
+private:
+	shared_ptr<vector<string>> input;
+	map<string, shared_ptr<set<line_no>>> result;
+};
+
+class QueryResult
+{
+public:
+	friend ostream& print(ostream&, const QueryResult&);
+
+private:
+	string word;
+	shared_ptr<set<TextQuery::line_no>> nos;
+	shared_ptr<vector<string>> input;
+};
+
+ostream& print(ostream &, const QueryResult&);
+
+#endif // !EX12_27_H
