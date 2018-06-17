@@ -89,3 +89,8 @@ inline StrBlobPtr StrBlob::end() const
 ex12_25
 
 释放pa应用一种特殊形式的delete，即delete[] pa;
+
+
+ex12_31
+
+vector是更好的选择，因为vector和set的区别在于set中的元素是自然排序的，但是本题中，因为我们是逐行输入文本，所以每个单词出现的行号自然是按照升序排列的，根据时间复杂度来看，set的insert时间复杂度是o(logn),vector的时间复杂度是n，所以用vector来说是更好的选择
