@@ -46,3 +46,14 @@ ex13_07
 这两个类都没有定义拷贝赋值运算符，因此编译器为它们定义了合成的拷贝赋值运算符，赋值一个StrBlob时，拷贝类中唯一的成员data，使用shared_ptr的拷贝赋值运算符来完成，因为对智能指针进行拷贝操作，其引用计数会加上1；
 赋值一个StrBlobPtr时，类中的成员函数由智能指针weak_ptr和普通的成员curr，所以赋值weak_ptr时，其引用计数不变，赋值普通的成员函数curr时，直接进行内存复制
 
+ex13_08
+
+HasPtr&
+HasPtr::operator=(const HasPtr &rhs)  //左侧运算对象是HasPtr
+{
+	auto newps = new string(*rhs.ps);  //拷贝指针指向的对象
+	delete ps;  //销毁原string
+	ps = newps; //指向新string
+	i = rhs.i;  //使用内置的int赋值
+	return *this;  //返回一个此对象的引用
+}
