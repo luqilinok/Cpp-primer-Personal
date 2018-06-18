@@ -12,3 +12,8 @@ ex13_02
 
 这个声明是非法的，因为这条声明符合使用拷贝构造函数的第二种情况--将一个对象作为实参传递给一个非引用类型的形参，因此这个拷贝构造函数的参数应该是引用类型的，但是实际上这个参数是非引用类型的，所以是错误的，应该进行如下的修改：
 Sales_data::Sales_data(Sales_data &rhs)
+
+ex13_03
+
+StrBlob只有一个成员函数，是shared_ptr<vector<string>> data,所以拷贝StrBlob时，根据“对类类型的成员，会使用其拷贝构造函数来进行拷贝”这一规则，会使用一个拷贝构造函数来拷贝StrBlob的成员，又因为StrBlob中的成员函数是智能指针shared_ptr，对其进行拷贝会使其引用计数加1；
+StrBlobPtr有两个成员函数，分别是weak_ptr<vector<string>>和普通类型的，所以根据规则，对于weak_ptr<vector<string>>类型的用拷贝构造函数来对其进行拷贝，其引用计数值加1，curr是普通类型的，直接拷贝就可以了
