@@ -16,7 +16,7 @@ Sales_data::Sales_data(Sales_data &rhs)
 ex13_03
 
 StrBlob只有一个成员函数，是shared_ptr<vector<string>> data,所以拷贝StrBlob时，根据“对类类型的成员，会使用其拷贝构造函数来进行拷贝”这一规则，会使用一个拷贝构造函数来拷贝StrBlob的成员，又因为StrBlob中的成员函数是智能指针shared_ptr，对其进行拷贝会使其引用计数加1；
-StrBlobPtr有两个成员函数，分别是weak_ptr<vector<string>>和普通类型的，所以根据规则，对于weak_ptr<vector<string>>类型的用拷贝构造函数来对其进行拷贝，其引用计数值加1，curr是普通类型的，直接拷贝就可以了
+StrBlobPtr有两个成员函数，分别是weak_ptr<vector<string>>和普通类型的，所以根据规则，对于weak_ptr<vector<string>>类型的用拷贝构造函数来对其进行拷贝，其引用计数不变1，curr是普通类型的，直接拷贝就可以了
 
 
 ex13_04
@@ -34,3 +34,15 @@ HasPtr::HasPtr(const HasPtr &hr)
 	ps = new string(*hr.ps);
 	i = hr.i;
 }
+
+ex13_06
+
+拷贝赋值运算符，是一个名为operator=的函数，由返回类型和参数列表组成。
+当需要对类的对象进行拷贝操作时，就会使用拷贝赋值运算符。
+如果一个类没有定义自己的拷贝赋值运算符，编译器就会为其合成拷贝赋值运算符，完成赋值操作，但是对于某些类，合成拷贝赋值运算符用来禁止该类型对象的赋值
+
+ex13_07
+
+这两个类都没有定义拷贝赋值运算符，因此编译器为它们定义了合成的拷贝赋值运算符，赋值一个StrBlob时，拷贝类中唯一的成员data，使用shared_ptr的拷贝赋值运算符来完成，因为对智能指针进行拷贝操作，其引用计数会加上1；
+赋值一个StrBlobPtr时，类中的成员函数由智能指针weak_ptr和普通的成员curr，所以赋值weak_ptr时，其引用计数不变，赋值普通的成员函数curr时，直接进行内存复制
+
