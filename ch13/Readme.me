@@ -150,4 +150,7 @@ ex13_32
 
 ex13_33
 
-save和remove函数的功能是想一个给定Folder中添加一条Message或者从中删除一条Message，且在创建时只会指明消息内容，不会指出Folder，因此参数的类型就不能够是非引用类型的，
+save和remove函数的作用是添加/删除folder中的Message，如果将形参类型定义为Folder，那么就是一个传值调用，那么形参和实参就是两个相互独立的量，那么save和remove函数对形参Folder所做的所有操作都不会影响到实参，save和remove操作就失去了原来希望的作用，就没有意义了
+  另一方面，save和remove函数将会改变Folder中的值，因此不能使用常量关键字const
+  
+ 
