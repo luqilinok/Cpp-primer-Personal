@@ -154,3 +154,7 @@ save和remove函数的作用是添加/删除folder中的Message，如果将形�
   另一方面，save和remove函数将会改变Folder中的值，因此不能使用常量关键字const
   
  
+ex13_35
+
+Message包含string类型的content和set类型的folders，它们都是标准库类型，有完整的拷贝控制成员，因此如果使用Message的合成的拷贝控制成员，那么简单拷贝这两个成员也能实现正确的拷贝
+但是Message拷贝时还要将Message添加到每个包含该Message的Folder中，删除时还要将Message删除，即分别需要调用addMsg和remMsg,因此，不能依赖合成的拷贝控制成员，而是需要设计自己的版本来完成这些工作
