@@ -164,3 +164,12 @@ ex13_37
 根据题意，那么Message定义的类成员应该是这样的：
 void addFldr(Folder *f) { folders.insert(f); }  //向Folder中添加Message
 void remFldr(Folder *f) { folders.erase(f); }   //从Folder中删除Message
+
+ex13_38
+
+当涉及到动态分配内存时,拷贝并交换是一个完成该功能的精简的方式. ，但是在Message类中,并未涉及到动态分配内存,这种方法并不会产生任何益处，同时还会因为很多指针操作让程序变得更复杂难难以实现
+具体来说，如果采用拷贝并交换方式，执行的方式是这样的：
+1.由于赋值运算符的参数是Message类型，因此会将实参拷贝给形参rhs，这样会触发拷贝构造函数，将实参的contents和folders拷贝给rhs，并调用add_to_Folders将rhs添加到folders的所有文件夹中
+2.随后赋值运算符调用swap交换*this和rhs，首先遍历两者的folders，将它们从自己的文件夹中删除，然后调用string和set的swap交换它们的contents和folders，最后，再遍历两者新的folders，将它们分别添加到自己的新文件夹中
+3.最后，赋值运算符结束，rhs被销毁，析构函数调用remove_frome_Folders将rhs从自己所有文件夹中删除
+显然，虽然语义是正确的，达到了预期的目的，但是效率低下，rhs创建、销毁并两次添加、删除是毫无意义的，而采用拷贝赋值运算符的标准编写方式，形参rhs为引用类型，就能避免这些多余的操作，具有更好的性能
