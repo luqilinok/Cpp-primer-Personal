@@ -158,3 +158,9 @@ ex13_35
 
 Message包含string类型的content和set类型的folders，它们都是标准库类型，有完整的拷贝控制成员，因此如果使用Message的合成的拷贝控制成员，那么简单拷贝这两个成员也能实现正确的拷贝
 但是Message拷贝时还要将Message添加到每个包含该Message的Folder中，删除时还要将Message删除，即分别需要调用addMsg和remMsg,因此，不能依赖合成的拷贝控制成员，而是需要设计自己的版本来完成这些工作
+
+ex13_37
+
+根据题意，那么Message定义的类成员应该是这样的：
+void addFldr(Folder *f) { folders.insert(f); }  //向Folder中添加Message
+void remFldr(Folder *f) { folders.erase(f); }   //从Folder中删除Message
