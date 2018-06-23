@@ -187,3 +187,16 @@ ex13_42
 成员函数get_file的定义修改为 shared_ptr<StrVec> get_file(){return file}
 TextQuery中构造函数初始化input成员的操作修改为
 TextQuery::TextQuery(ifstream &is):input(new StrVec)
+
+ex13_ 43
+
+使用for_each和lambda重写后的free成员函数如下：
+	inline void StrVec::free()
+	{
+		if(elements)
+		{
+			for_each(elements,first_free,[](std::string &s){alloc.destroy(&s);});
+			alloc.deallocate(elements,cap-elements);
+		}
+	}
+	可以发现使用for_each和lambda来代替for循环和destroy更好，因为这个版本不需要循环，而且语义更加明显
