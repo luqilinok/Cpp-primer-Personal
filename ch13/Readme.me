@@ -236,3 +236,34 @@ ex13_52
 
 在第一个赋值中，hp2是一个左值，不能用移动构造函数，rhs将使用拷贝构造函数来进行初始化，拷贝构造函数将分配一个新的string，并拷贝hp2指向的string
 在第二个赋值中，调用了std::move将一个右值绑定到hp2上，在此情况下，拷贝构造函数和移动构造函数都是可行的，但是，因为实参是右值引用，移动构造函数是精确匹配的，因此移动构造函数从hp2拷贝指针，而不会分配任何内存
+
+
+ex13_53
+
+（1）在进行赋值拷贝时，先通过拷贝构造函数创建了hp2的拷贝rhs，然后再交换hp和rhs，rhs作为一个中间媒介，只是起到了将值从hp2传递给hp的作用，这是一个冗余的操作
+类似的，在进行移动赋值时，先从hp2转移到rhs，再交换到hp也是冗余的，因此HasPtr的赋值运算符并不理想；
+（2）拷贝赋值运算符：
+HasPtr&
+HasPtr::operator=(const HasPtr &rhs)  //左侧运算对象是HasPtr
+{
+	auto newps = new string(*rhs.ps);  //拷贝指针指向的对象
+	delete ps;  //销毁原string
+	ps = newps; //指向新string
+	i = rhs.i;  //使用内置的int赋值
+	return *this;  //返回一个此对象的引用
+}
+
+移动赋值运算符：
+HasPtr& operator=(HasPtr &&rhs) noexcept
+{
+	cout<<"Move Assignment"<<endl;
+	if(this!=&rhs)
+	{
+		delete ps;
+		ps=rhs.ps;
+		rhs.ps=nullptr;
+		rhs.i=0;
+	}
+	return *this;
+}
+（3）比较移动赋值运算符和拷贝赋值运算符可以发现，拷贝赋值运算符的唯一好处是统一了拷贝和移动赋值运算，但是在性能角度，多了一次从rhs的间接传递，性能不好
