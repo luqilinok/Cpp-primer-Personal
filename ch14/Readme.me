@@ -3,3 +3,53 @@
 重载操作符必须具有至少一个class或枚举类型的操作数
 重载操作符不保证操作数的求值顺序，例如对&&和||的重载版本不再具有“短路求值”的特性，两个操作数都要进行求值操作，而且不规定操作数的求值顺序
 相同点：对于优先级和结合性及操作数的数目都不变
+
+ex14_03
+
+(a)"cobble"=="store"应用了C++语言内置版本的==，比较两个指针；
+(b)svec1[0]=svec2[0]应用string版本的重载==；
+(c)svec1=svec2应用了vector版本的重载==；
+(d)svec1[0]=="stone"应用了string版本的重载==，字符串字面常量被转换为string
+
+ex14_04
+
+(a)%是一个具有对称性的运算符，因此%通常定义为非成员
+(b)%=是一个能够改变类对象状态的运算符，因此%=定义为类的成员运算符
+(c)++是一个能够改变类独享状态的云算符，因此++定义为类的成员运算符
+(d)箭头运算符必须定义为成员运算符
+(e)<<通常被定义为非成员运算符
+(f)&&通常被定义为非成员运算符
+(g)==通常被定义为非成员运算符
+(h)调用运算符必须被定义为成员运算符
+
+ex14_05
+
+当时我是编写的book类，代码如下：
+
+#include<iostream>
+#include<string>
+
+
+class Book
+{
+public:
+	Book() = default;
+	Book(const std::string &name, const std::string &I, double pr, const std::string &a, const std::string &p)
+	{
+		BookName = name;
+		ISBN = I;
+		Price = pr;
+		Author = a;
+		Publisher = p;
+	}
+	Book(std::istream &in)
+	{
+		in >> BookName >> ISBN >> Price >> Author >> Publisher;
+	}
+
+private:
+	std::string BookName, ISBN, Author, Publisher;
+	double Price = 0.0;
+};
+
+对其进行修改，可以定义重载的运算符，如ex13_05.h
