@@ -53,3 +53,43 @@ private:
 };
 
 对其进行修改，可以定义重载的运算符，如ex14_05.h
+
+
+ex14_06
+
+Sales_data的输出运算符的定义如下：
+
+class Sales_data
+{
+	friend ostream& operator<<(ostream &os,const Sales_data &item);
+	//其他成员
+};
+ostream operator<<(ostream &os,const Sales_data &item)
+{
+	
+	os<<item.isbn()<<" "<<item.units_sold()<<" "<<item.revenue()<<" "<<item.avg_price();
+	return os;
+}
+
+ex14_07
+
+String类的输出运算符如下：
+ class String
+ {
+ 	public:
+		String();
+		String(const char *str);
+		friend ostream& operator<<(ostream &os,const String &str);
+	private:
+		char *str;
+ };
+ 
+ ostream& operator<<(ostream &os,const String &str)
+ {
+ 	cout<<str;
+	return os;
+ }
+ 
+ ex14_08
+ 
+ 这道例题的解答请参考14_05.cpp
