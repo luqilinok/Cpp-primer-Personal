@@ -6,11 +6,7 @@
 #include <initializer_list>
 #include <algorithm>
 
-#ifndef _MSC_VER
-#define NOEXCEPT noexcept
-#else
-#define NOEXCEPT
-#endif
+
 
 class StrVec
 {
@@ -155,13 +151,13 @@ void StrVec::resize(size_t count, const std::string &s)
 	}
 }
 
-StrVec::StrVec(StrVec &&s) NOEXCEPT : elements(s.elements), first_free(s.first_free), cap(s.cap)
+StrVec::StrVec(StrVec &&s) noexcept : elements(s.elements), first_free(s.first_free), cap(s.cap)
 {
 	// leave s in a state in which it is safe to run the destructor.
 	s.elements = s.first_free = s.cap = nullptr;
 }
 
-StrVec& StrVec::operator = (StrVec &&rhs) NOEXCEPT
+StrVec& StrVec::operator = (StrVec &&rhs) noexcept
 {
 	if (this != &rhs) {
 		free();
