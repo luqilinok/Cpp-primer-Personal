@@ -6,8 +6,6 @@
 #include <initializer_list>
 #include <algorithm>
 
-
-
 class StrVec
 {
 	friend bool operator==(const StrVec&, const StrVec&);
@@ -22,8 +20,8 @@ public:
 	StrVec(std::initializer_list<std::string>);
 	StrVec(const StrVec&);
 	StrVec& operator=(const StrVec&);
-	StrVec(StrVec&&) NOEXCEPT;
-	StrVec& operator=(StrVec&&)NOEXCEPT;
+	StrVec(StrVec&&) noexcept;
+	StrVec& operator=(StrVec&&)noexcept;
 	~StrVec();
 
 	StrVec& operator=(std::initializer_list<std::string>);
