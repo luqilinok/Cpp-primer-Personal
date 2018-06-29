@@ -14,7 +14,7 @@ public:
 
 	std::string isbn() const { return bookNo; };
 	Sales_data& combine(const Sales_data&);
-
+	Sales_data& operator+=(const Sales_data &rhs);
 private:
 	std::string bookNo;
 	unsigned units_sold = 0;
@@ -55,6 +55,13 @@ inline Sales_data operator+(const Sales_data &lhs, const Sales_data &rhs)
 	Sales_data sum = lhs;
 	sum += rhs;
 	return sum;
+}
+
+Sales_data& Sales_data::operator+=(const Sales_data &rhs)
+{
+	units_sold += rhs.units_sold;
+	revenue = rhs.revenue;
+	return *this;
 }
 
 inline double Sales_data::avg_price() const
