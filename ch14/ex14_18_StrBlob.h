@@ -1,37 +1,55 @@
-#ifndef CP5_STRBLOB_H
-#define CP5_STRBLOB_H
+#ifndef CP5_STRBLOB_H_
+#define CP5_STRBLOB_H_
 
-#include<iostream>
-#include<vector>
-#include<initializer_list>
-#include<memory>
-#include<exception>
+#include <vector>
+using std::vector;
 
-#include <algorithm>
+#include <string>
+using std::string;
 
-using namespace std;
+#include <initializer_list>
+using std::initializer_list;
+
+#include <memory>
+using std::make_shared; using std::shared_ptr;
+
+#include <exception>
+
+#ifndef _MSC_VER
+#define NOEXCEPT noexcept
+#else
+#define NOEXCEPT
+#endif
 
 class StrBlobPtr;
 class ConstStrBlobPtr;
 
-class StrBlob
-{
+//=================================================================================
+//
+//		StrBlob - custom vector<string>
+//
+//=================================================================================
+
+class StrBlob {
 	using size_type = vector<string>::size_type;
 	friend class ConstStrBlobPtr;
 	friend class StrBlobPtr;
 	friend bool operator==(const StrBlob&, const StrBlob&);
 	friend bool operator!=(const StrBlob&, const StrBlob&);
-	friend bool operator<(const StrBlob&, const StrBlob&);
-	friend bool operator>(const StrBlob&, const StrBlob&);
+	friend bool operator< (const StrBlob&, const StrBlob&);
+	friend bool operator> (const StrBlob&, const StrBlob&);
 	friend bool operator<=(const StrBlob&, const StrBlob&);
 	friend bool operator>=(const StrBlob&, const StrBlob&);
 
 public:
-	StrBlob() :data(make_shared<vector<string>>()) {}
+	StrBlob() : data(make_shared<vector<string>>()) { }
+	StrBlob(initializer_list<string> il) : data(make_shared<vector<string>>(il)) { }
+
+	StrBlob(const StrBlob &sb) : data(make_shared<vector<string>>(*sb.data)) { }
 	StrBlob& operator=(const StrBlob&);
 
-	StrBlob(StrBlob &&rhs)noexcept :data(std::move(rhs.data)) {}
-	StrBlob& operator=(StrBlob &&)noexcept;
+	StrBlob(StrBlob &&rhs) NOEXCEPT : data(std::move(rhs.data)) { }
+	StrBlob& operator=(StrBlob &&)NOEXCEPT;
 
 	StrBlobPtr begin();
 	StrBlobPtr end();
@@ -42,7 +60,7 @@ public:
 	size_type size() const { return data->size(); }
 	bool empty() const { return data->empty(); }
 
-	void push_back(const string&t) { data->push_back(t); }
+	void push_back(const string &t) { data->push_back(t); }
 	void push_back(string &&s) { data->push_back(std::move(s)); }
 
 	void pop_back();
@@ -59,15 +77,15 @@ private:
 
 bool operator==(const StrBlob&, const StrBlob&);
 bool operator!=(const StrBlob&, const StrBlob&);
-bool operator<(const StrBlob&, const StrBlob&);
-bool operator>(const StrBlob&, const StrBlob&);
+bool operator< (const StrBlob&, const StrBlob&);
+bool operator> (const StrBlob&, const StrBlob&);
 bool operator<=(const StrBlob&, const StrBlob&);
 bool operator>=(const StrBlob&, const StrBlob&);
 
 inline void StrBlob::pop_back()
 {
 	check(0, "pop_back on empty StrBlob");
-	return data->pop_back();
+	data->pop_back();
 }
 
 inline string& StrBlob::front()
@@ -98,6 +116,12 @@ inline void StrBlob::check(size_type i, const string &msg) const
 {
 	if (i >= data->size()) throw std::out_of_range(msg);
 }
+
+//=================================================================================
+//
+//		StrBlobPtr - custom iterator of StrBlob
+//
+//=================================================================================
 
 class StrBlobPtr {
 	friend bool operator==(const StrBlobPtr&, const StrBlobPtr&);
@@ -149,6 +173,11 @@ inline shared_ptr<vector<string>> StrBlobPtr::check(size_t i, const string &msg)
 	return ret;
 }
 
+//=================================================================================
+//
+//		ConstStrBlobPtr - custom const_iterator of StrBlob
+//
+//=================================================================================
 
 class ConstStrBlobPtr {
 	friend bool operator==(const ConstStrBlobPtr&, const ConstStrBlobPtr&);
@@ -200,137 +229,4 @@ inline std::shared_ptr<vector<string>> ConstStrBlobPtr::check(size_t i, const st
 	return ret;
 }
 
-
-bool operator==(const StrBlob &lhs, const StrBlob &rhs)
-{
-	return *lhs.data == *rhs.data;
-}
-
-bool operator!=(const StrBlob &lhs, const StrBlob &rhs)
-{
-	return !(lhs == rhs);
-}
-
-bool operator< (const StrBlob &lhs, const StrBlob &rhs)
-{
-	return std::lexicographical_compare(lhs.data->begin(), lhs.data->end(), rhs.data->begin(), rhs.data->end());
-}
-
-bool operator> (const StrBlob &lhs, const StrBlob &rhs)
-{
-	return rhs < lhs;
-}
-
-bool operator<=(const StrBlob &lhs, const StrBlob &rhs)
-{
-	return !(rhs < lhs);
-}
-
-bool operator>=(const StrBlob &lhs, const StrBlob &rhs)
-{
-	return !(lhs < rhs);
-}
-
-
-
-bool operator==(const StrBlobPtr &lhs, const StrBlobPtr &rhs)
-{
-	return lhs.curr == rhs.curr;
-}
-
-bool operator!=(const StrBlobPtr &lhs, const StrBlobPtr &rhs)
-{
-	return !(lhs == rhs);
-}
-
-bool operator< (const StrBlobPtr &x, const StrBlobPtr &y)
-{
-	return x.curr < y.curr;
-}
-
-bool operator>(const StrBlobPtr &x, const StrBlobPtr &y)
-{
-	return x.curr > y.curr;
-}
-
-bool operator<=(const StrBlobPtr &x, const StrBlobPtr &y)
-{
-	return x.curr <= y.curr;
-}
-
-bool operator>=(const StrBlobPtr &x, const StrBlobPtr &y)
-{
-	return x.curr >= y.curr;
-}
-
-
-bool operator==(const ConstStrBlobPtr &lhs, const ConstStrBlobPtr &rhs)
-{
-	return lhs.curr == rhs.curr;
-}
-
-bool operator!=(const ConstStrBlobPtr &lhs, const ConstStrBlobPtr &rhs)
-{
-	return !(lhs == rhs);
-}
-
-bool operator< (const ConstStrBlobPtr &lhs, const ConstStrBlobPtr &rhs)
-{
-	return lhs.curr < rhs.curr;
-}
-
-bool operator>(const ConstStrBlobPtr &lhs, const ConstStrBlobPtr &rhs)
-{
-	return lhs.curr > rhs.curr;
-}
-
-bool operator<=(const ConstStrBlobPtr &lhs, const ConstStrBlobPtr &rhs)
-{
-	return lhs.curr <= rhs.curr;
-}
-
-bool operator>=(const ConstStrBlobPtr &lhs, const ConstStrBlobPtr &rhs)
-{
-	return lhs.curr >= rhs.curr;
-}
-
-
-StrBlob& StrBlob::operator=(const StrBlob &lhs)
-{
-	data = make_shared<vector<string>>(*lhs.data);
-	return *this;
-}
-
-StrBlob& StrBlob::operator=(StrBlob &&rhs) noexcept
-{
-	if (this != &rhs) {
-		data = std::move(rhs.data);
-		rhs.data = nullptr;
-	}
-
-	return *this;
-}
-
-
-
-StrBlobPtr StrBlob::begin()
-{
-	return StrBlobPtr(*this);
-}
-
-StrBlobPtr StrBlob::end()
-{
-	return StrBlobPtr(*this, data->size());
-}
-
-ConstStrBlobPtr StrBlob::cbegin() const
-{
-	return ConstStrBlobPtr(*this);
-}
-
-ConstStrBlobPtr StrBlob::cend() const
-{
-	return ConstStrBlobPtr(*this, data->size());
-}
-
-#endif // !CP5_STRBLOB_H
+#endif //CP5_STRBLOB_H_
