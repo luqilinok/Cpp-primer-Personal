@@ -43,8 +43,8 @@ public:
     char* begin() const { return elements; }
     char* end() const { return last_elem; }
 
-    char& operator[](size_t n) { return elements[n]; }
-    const char& operator[](size_t n) const { return elements[n]; }
+    char& operator[](size_t n) { return elements[n]; }  //非常量引用的下标运算符
+    const char& operator[](size_t n) const { return elements[n]; }   //常量引用的下标运算符
 
     const char *c_str() const { return elements; }
     size_t size() const { return last_elem - elements; }
