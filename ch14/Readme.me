@@ -192,3 +192,8 @@ ex14_48
 
 我当时编写的是Book类，含有BookName, ISBN, Author, Publisher四个数据成员，
 可以为Book类定义bool类型的转换运算符，用来检查4个数据成员是否存在有效值，bool类型转换运算符应该声明成explicit的，因为我们需要显式在条件表达式中使用它
+
+ex14_50
+
+对于int ex1=ldObj;因为ldObj是longdouble类型的，所以首先需要把LongDouble类型转换为int类型，但是longdouble类型并没有定义对相应的类型转换运算符，因此它会尝试使用其他的来进行转换，由operator double()和operator float()都满足要求，但是编译器无法确定哪一个更合适，因此会产生二义性错误
+对于float ex2=ldObj;它需要把Longdouble转换成float类型，而我们恰好定义了对应的类型转换运算符，因此只要直接调用operator float()即可
