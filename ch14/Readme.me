@@ -197,3 +197,7 @@ ex14_50
 
 对于int ex1=ldObj;因为ldObj是longdouble类型的，所以首先需要把LongDouble类型转换为int类型，但是longdouble类型并没有定义对相应的类型转换运算符，因此它会尝试使用其他的来进行转换，由operator double()和operator float()都满足要求，但是编译器无法确定哪一个更合适，因此会产生二义性错误
 对于float ex2=ldObj;它需要把Longdouble转换成float类型，而我们恰好定义了对应的类型转换运算符，因此只要直接调用operator float()即可
+
+ex14_51
+
+这里会优先调用void calc(int)函数，因为double转换成int是标准类型转换，而转换为LongDouble则是转换为用户自定义类型，实际上是调用了转换构造函数，因此前者有限
