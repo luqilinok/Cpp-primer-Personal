@@ -171,3 +171,24 @@ bool dividedByAll(vector<int> &ivec,int dividend)
 {
 	return count_if(ivec.begin(),ivec.end(),bindlst(modulus<int>,dividend))==0;
 }
+
+ex14_45
+
+如果要转换成string，那么返回值应该是bookNo
+如果要转换成double，那么返回值应该是avg_price;
+
+ex14_46
+
+不应该为Sales_data定义上面两种类型的转换运算符，因为对于该类来说，它包含三个数据成员：bookNO,units_sold和revenue，只有这三个数据在一起才是有效的数据。
+但是如果定义了这两个类型转换运算符的话，应该把它们声明成explicit的，这样可以防止Sales_data在某些情况下被默认转换成string或double
+类型，这有可能导致意料之外的错误
+
+ex14_47
+
+前者将对象转换成const int类型的，在接受const int值的地方才能够使用
+后者将对象转换成int值，相对来说更通用一些
+
+ex14_48
+
+我当时编写的是Book类，含有BookName, ISBN, Author, Publisher四个数据成员，
+可以为Book类定义bool类型的转换运算符，用来检查4个数据成员是否存在有效值，bool类型转换运算符应该声明成explicit的，因为我们需要显式在条件表达式中使用它
