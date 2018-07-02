@@ -201,3 +201,21 @@ ex14_50
 ex14_51
 
 这里会优先调用void calc(int)函数，因为double转换成int是标准类型转换，而转换为LongDouble则是转换为用户自定义类型，实际上是调用了转换构造函数，因此前者有限
+
+ex14_52
+
+对于ld=si+ld:
+因为LongDouble不能转换为SmallInt，所以SmallInt的成员operator+和friend operator+都不可行；
+由于SmallInt不能转换为LongDouble，LongDouble的成员operator+和非成员operator+也不可行；
+因为SmallInt可以转换为int，LongDouble可以转换为float和double，所以内置的operator+(int,float)和operator+(int,double)都可行，所以会产生二义性；
+
+
+对于ld=ld+si：
+因为SmallInt不能转换为double，LongDouble也不能转换成SmallInt，因此SmallInt的成员operator+和两个非成员operator+都不匹配
+LongDouble的operator+可行，而且是精确匹配；
+SmallInt可以转换成int，LongDouble可以转换成float和double，因此内置的operator+(float,int)和operator+(double,int)都可行，但是它们都需要类型转换，因此LongDouble的成员operator优先匹配
+
+ex14_53
+
+内置的operator+（int，double）是可行的，而3.14可以转换为int，然后再转换为SmallInt，所以SmallInt的成员operator+也是可行的，二者都需要类型转换，所以会产生二义性。应该进行如下修改：
+double d = s1+Small(3..14)
