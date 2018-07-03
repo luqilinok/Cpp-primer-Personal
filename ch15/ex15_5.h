@@ -29,6 +29,7 @@ double print_total(ostream &os, const Quote &item, size_t n)
 
 class Bulk_quote :public Quote
 {
+	Bulk_quote(const std::string &book, double p, std::size_t qty, double disc) :Quote(book, p), min_qty(qty), discount(disc) {}
 public:
 	double net_price(size_t cnt) const override
 	{
