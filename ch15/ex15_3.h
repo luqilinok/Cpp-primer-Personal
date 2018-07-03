@@ -17,7 +17,7 @@ protected:
 	double price = 0.0;  //代表普通状态下不打折的价格
 };
 
-double print_total(ostream &os, Quote &item, size_t n)
+double print_total(ostream &os, const Quote &item, size_t n)
 {
 	//根据传入item形参的对象类型调用Quote::net_price
 	//或者BUlk_quote::net_price
