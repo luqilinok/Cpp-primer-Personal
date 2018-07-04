@@ -1,5 +1,5 @@
 #include<iostream>
-#include"ex15_5.h"
+#include"ex15_05.h"
 
 using namespace std;
 
