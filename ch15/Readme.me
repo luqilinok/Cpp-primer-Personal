@@ -12,3 +12,20 @@ ex15_04
 (a)是错误的，不能用类本身作为类的基类
 (b)是正确的
 (c)声明类时，不可以包含派生列表
+
+ex15_08
+
+静态类型：表达式的静态类型在编译时总是已知的，它是变量声明时的类型或表达式生成的类型；
+动态类型：动态类型则是变量或表达式表示的内存中的对象的类型，动态类型直到运行时才可知
+
+ex15_09
+
+基类的静态类型可能和其动态类型是不一致的，例子如下：
+    Bulk_quote bulk;
+    Quote *pQuote=&bulk;
+    Quote &rQuote=bulk;
+    double print_total(ostream &os,const Quote &otem,size_t n);
+    
+ex15_10
+
+ifstream是从istream中派生而来的，是一个对象，所以能够正常使用
