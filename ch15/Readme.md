@@ -94,4 +94,4 @@ ex15_29
 
 ex15_31
 
-
+![image](Cpp-primer-Personal/ch15/ex15_31.png)
