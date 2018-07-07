@@ -94,4 +94,7 @@ ex15_29
 
 ex15_31
 
-![image](Cpp-primer-Personal/ch15/ex15_31.png)
+已经上传图片到本文件夹，名字是ex15_31.png,所以回答如下：
+(a)共创建了12个对象：其中6个Query_base对象以及其相关联的句柄。6个Query_base对象分别是3个WordQuery对象，一个NOtQuery对象，1个AndQuery对象，一个OrQuery对象
+(b)和(a)是相同的
+(c)共创建了14个对象，其中7个Query_base对象及其相关联的句柄，7个Query_base对象分别是4个WordQuery对象，2个AndQuery对象，1个OrQuery对象
