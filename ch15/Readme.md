@@ -126,4 +126,6 @@ ex15_34
 
 8: Query::Query(std::shared_ptr<Query_base> query) 2次
 
-(b) 
+(b) 运算符"<<"会调用Query的rep成员，Query.rep()调用的是OrQuery的rep(因为初始化对象q时使用的是值是"|"运算符返回的Query，而该对象的智能指针q指向的是一个OrQuery对象)，而OrQuery并没有定义rep成员，所以直接使用直接基类BinaryQuery的rep成员
+
+(c)q调用的是OrQuery的eval函数，因为是虚函数，且使用引用调用，需动态绑定
