@@ -110,3 +110,20 @@ Query类没有定义自己的拷贝/移动控制成员，所以进行拷贝控�
 ex15_33
 
 Query_base是一个虚基类，不允许直接声明其对象。当它的派生类对象进行这些操作的时候，会调用Query_base的响应控制成员，而Query_base没有定义自己的拷贝/移动控制成员，实际上它没有任何数据成员，无需定义这些操作，因此进行这些操作的时候，执行默认的语义，什么都不会发生
+
+ex15_34
+
+(a)处理表达式Query("fiery")&Query("bird")|Query("wind")所执行的构造函数如下：
+1: Query::Query(const std::string& s) 
+
+2: WordQuery::WordQuery(const std::string& s) 
+3: AndQuery::AndQuery(const Query& left, const Query& right);
+4: BinaryQuery(const Query&l, const Query& r, std::string s);
+5: Query::Query(std::shared_ptr<Query_base> query) 2次
+6: OrQuery::OrQuery(const Query& left, const Query& right);
+7: BinaryQuery(const Query&l, const Query& r, std::string s);
+
+
+8: Query::Query(std::shared_ptr<Query_base> query) 2次
+
+(b) 
