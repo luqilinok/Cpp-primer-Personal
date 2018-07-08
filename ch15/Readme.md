@@ -129,3 +129,15 @@ ex15_34
 (b) 运算符"<<"会调用Query的rep成员，Query.rep()调用的是OrQuery的rep(因为初始化对象q时使用的是值是"|"运算符返回的Query，而该对象的智能指针q指向的是一个OrQuery对象)，而OrQuery并没有定义rep成员，所以直接使用直接基类BinaryQuery的rep成员
 
 (c)q调用的是OrQuery的eval函数，因为是虚函数，且使用引用调用，需动态绑定
+
+
+ex15_37
+
+书中的实现方式是用Query类封装了Query_base的智能指针，管理实际查询处理用到的是不同Query类型对象
+如果不使用Query类，则涉及使用Query类型的地方，都要改成Query_base指针，最简单的方法就是在类的声明中将Query_base声明为友元类，即friend class Query_base
+
+ex15_38
+
+第一条声明是不合法的，因为BinaryQuery中的eval是纯虚函数
+第二条声明是不合法的，不能将Query转换为AndQuery
+第三条声明是不合法的，不能将Query转换为OrQuery
