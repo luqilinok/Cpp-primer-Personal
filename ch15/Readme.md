@@ -141,3 +141,7 @@ ex15_38
 第一条声明是不合法的，因为BinaryQuery中的eval是纯虚函数
 第二条声明是不合法的，不能将Query转换为AndQuery
 第三条声明是不合法的，不能将Query转换为OrQuery
+
+ex15_40
+
+OrQuery的eval从lhs和rhs获取范围来构造set（或向其插入），而set的构造和插入函操作可以正确的处理空值，因此无论lhs和rhs的结果是否为空集，eval都能得到正确的结果
