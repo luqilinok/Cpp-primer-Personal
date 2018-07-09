@@ -10,3 +10,7 @@ error:no match for 'operator<'(operand types are 'const Sales_data') and 'const 
 ex16_06
 
 begin应返回数组首元素的指针，因此是return &a[0],end返回尾后指针，因此在begin上加上数组大小N即可，模板定义请看ex16_06.h
+
+ex16_08
+
+泛型编程的一个目标就是令算法是“通用的”，这样就能够适应不同的类型，所有标准库容器都定义了==和!=运算符，但是只有少量定义了<运算符，因此，尽量使用!=而不是<,可以减少算法适用容器的限制
