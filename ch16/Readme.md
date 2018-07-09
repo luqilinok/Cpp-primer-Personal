@@ -6,3 +6,7 @@ ex16_03
 
 在gcc-4.8.1中，对两个Sales_data对象调用compare函数模板，编译器会报告如下错误。原因是compare是用<运算符来比较两个对象的，需要类型T实现定义<运算符，但是Sales_data类没有定义<运算符，所以会报错
 error:no match for 'operator<'(operand types are 'const Sales_data') and 'const Sales_data'
+
+ex16_06
+
+begin应返回数组首元素的指针，因此是return &a[0],end返回尾后指针，因此在begin上加上数组大小N即可，模板定义请看ex16_06.h
