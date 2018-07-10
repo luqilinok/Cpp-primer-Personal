@@ -46,3 +46,14 @@ ex16_18
 （c）是非法的，inline智能放在模板参数列表之后，即template<typename T> inline T foo(T,unsigned int*);
 （d）是非法的，因为没有指定函数模板返回类型
 （e）是合法的，在模板作用域中，类型参数Ctype屏蔽了之前定义的类型别名Ctype
+
+
+ex16_22
+
+两种指针类型重载删除器的方式不同：
+unique_ptr<int,Debugdelete> m(new int,Debugdelete());//P418页见表12.4第3个
+shared_ptr<int> n(new int,Debugdelete());//P412页见表12.3第3个
+
+ex16_23
+
+当shared_ptr的引用计数变为0时，需要释放资源时，就会调用删除器进行资源释放。分析插叙你的主程序可知，runQueries函数结束时，TextQuery对象tq声明周期结束，此时shared_ptr的引用计数变为0，会调用删除器进行资源的释放，调用运算符被执行并释放资源，打印一条信息，由于runQueries是主函数最后执行的语句，因此运行效果是程序结束前最后打印出信息
