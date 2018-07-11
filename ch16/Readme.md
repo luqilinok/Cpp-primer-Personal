@@ -96,3 +96,10 @@ ex16_35
 （b）的调用是合法的，因为calc的第二次参数是float，所以应该把f从float类型转换为int类型，T被推断为double类型
 （c）的调用是合法的，c和'c'都是char类型，T被推断为char
 （d）的调用是非法的，d为double类型，f是float类型，所以无法推断出T的适配类型应该是什么
+
+ex16_36
+
+(a)的调用是合法的，T被推断为int*
+(b)的调用是合法的，T1和T2都被推断为int*
+(c)的调用是合法的，T被推断为const int*
+(d)的调用是合法的，T1和T2都被推断为const int*
