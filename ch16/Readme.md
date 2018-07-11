@@ -103,3 +103,5 @@ ex16_36
 (b)的调用是合法的，T1和T2都被推断为int*
 (c)的调用是合法的，T被推断为const int*
 (d)的调用是合法的，T1和T2都被推断为const int*
+(e)的调用是非法的，T被推断为int* 或者是const int * 都不能匹配调用
+(f)的调用是合法的，T1倍推断为int * ，T2被推断为const int *
