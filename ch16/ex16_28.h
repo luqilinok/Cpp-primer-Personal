@@ -7,14 +7,14 @@ using namespace std;
 
 template<typename T>
 
-class shared_ptr
+class SP
 {
 public:
-	shared_ptr() :p(nullptr), use(nullptr) {}
-	explicit shared_ptr(T *pt) :P(pt), use(new size_t(l)) {}
-	shared_ptr(const shared_ptr &sp) :p(sp.p), use(sp.use) { if (use)++*use; }  //拷贝构造函数
-	shared_ptr& operator=(const shared_ptr&);  //拷贝赋值运算符
-	~shared_ptr();
+	SP() :p(nullptr), use(nullptr) {}
+	explicit SP(T *pt) :P(pt), use(new size_t(l)) {}
+	SP(const SP &sp) :p(sp.p), use(sp.use) { if (use)++*use; }  //拷贝构造函数
+	SP& operator=(const SP&);  //拷贝赋值运算符
+	~SP();
 	T& operator*() { return *p; } //解引用
 	T& operator*() const { return *p; }  //const版本的解引用
 
@@ -24,7 +24,7 @@ private:
 };
 
 template<typename T>
-shared_ptr<T>&shared_ptr<T>::operator=(const shared_ptr<T> &rhs)
+SP<T>&SP<T>::operator=(const SP<T> &rhs)
 {
 	if (rhs.use)
 	{
@@ -42,21 +42,21 @@ shared_ptr<T>&shared_ptr<T>::operator=(const shared_ptr<T> &rhs)
 }
 
 template<typename T, class...Args>
-shared_ptr<T> make_SP(Args&&...args)
+SP<T> make_SP(Args&&...args)
 {
-	return shared_ptr<T>(new T(std::forward<Args>(args)...));
+	return SP<T>(new T(std::forward<Args>(args)...));
 }
 
 template<typename T>
 
-class unique_ptr
+class UP
 {
 public:
-	unique_ptr() :p(nullptr) {}
-	unique_ptr(const unique_ptr&) = delete;  //禁止拷贝构造函数
-	explicit unique_ptr(T *pt) :p(pt) {}   //构造函数
-	unique_ptr& operator=(const unique_ptr&) = delete;  //禁止拷贝赋值运算符
-	~unique_ptr();
+	UP() :p(nullptr) {}
+	UP(const UP&) = delete;  //禁止拷贝构造函数
+	explicit UP(T *pt) :p(pt) {}   //构造函数
+	UP& operator=(const UP&) = delete;  //禁止拷贝赋值运算符
+	~UP();
 	T *release();    //交出控制权
 	void reset(T *new_p);   //释放对象
 	T& operator*() { return *p; }  //解引用运算符
@@ -67,7 +67,7 @@ private:
 };
 
 template<typename T>
-unique_ptr<T>::~unique_ptr()
+UP<T>::~UP()
 {
 	if (p)   //如果已经分配了内存空间
 	{
@@ -76,7 +76,7 @@ unique_ptr<T>::~unique_ptr()
 }
 
 template<typename T>
-void unique_ptr<T>::reset(T *new_p = nullptr)
+void UP<T>::reset(T *new_p = nullptr)
 {
 	if (p)
 	{
@@ -86,7 +86,7 @@ void unique_ptr<T>::reset(T *new_p = nullptr)
 }
 
 template<typename T>
-T* unique_ptr<T>::release()
+T* UP<T>::release()
 {
 	T *q = p;
 	p = nullptr;
