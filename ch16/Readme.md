@@ -130,3 +130,15 @@ ex16_42
 ex16_43
 
 表达式会留下左值，所以最终T被推断为int &，val经过引用折叠被确定为int &
+
+ex16_44
+
+当g的函数声明为T时，表明参数传递是传值的，三个调用的情况如下：
+(a)T为int，val的类型为int
+(b)T为int，val的类型为int
+(c)T为int，val的类型是int
+
+当g的参数类型为const T&时，表示可以传递给它任何类型的实参，而T的类型推断结果也不会是const的，因此，三个调用情况如下：
+（a）T为int，val的类型为const int&
+（b）T为int，val的类型是const int&
+（c）T为int，val的类型是const int&
