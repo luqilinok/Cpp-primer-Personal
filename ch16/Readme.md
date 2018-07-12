@@ -142,3 +142,8 @@ ex16_44
 （a）T为int，val的类型为const int&
 （b）T为int，val的类型是const int&
 （c）T为int，val的类型是const int&
+
+ex16_45
+
+(a)对g(42),T被推断为int，val的类型为int&&，因此v是整数的vector
+(b)对g(i),T被推断为int&，val的类型折叠尾int&，因此v被声明成int&的vector，因为不能定义指向引用的指针，所以不能定义指向int&的指针，也就不能声明int&的vector，编译失败
