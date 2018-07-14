@@ -182,3 +182,20 @@ ex16_55
 ex16_57
 
 本节的版本不要求参数具有相同的类型，当不知道实参的数目也不知道它们的类型时，本节的版本非常有用，而6.2.6节的版本只能适用于相同类型的多个参数的情形，当有新的类型时，就要为其编写新版本，编程工作量很大
+
+ex16_59
+
+因为s是一个左值，经过包扩展，它将以如下的形式传递给construct：std::forward<string>(s)
+  forward<string>的结果类型是string&，因此，construct将打得到一个左值引用实参，construct将继续用此参数传递给string的拷贝构造函数来创建新元素
+  
+ex16_60
+
+make_shared接受可变参数包，转发其参数初始化一个内存于内存空间，返回一个shared_ptr
+
+ex16_61
+
+template<typename T,class...Args>
+SP<T> make_SP(Args...args)
+  {
+    return SP<T>(new T(std::forword<Args>(args)...));
+  }
