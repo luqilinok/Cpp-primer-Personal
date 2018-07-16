@@ -36,3 +36,8 @@ ex17_14
 regex r("[[:alnum]]+\\.(cpp|cxx|cc)$",regex::icase),运行程序后，产生如下的错误：
 regex_error(error_ctype):The expression contained an invalid character class name.
 code:1
+
+
+ex17_16
+
+如果pattern只是"[^c]ei",则只与"?ei"形式的字符串进行匹配，其中?是除c之外的字符，因此，输出的只是错误拼写的部分，而不是包含错误拼写的完整单词
