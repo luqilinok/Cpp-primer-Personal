@@ -57,8 +57,7 @@ getData(istream &is)
 		istringstream record(line); 
 		record >> info.name;        
 		getline(record, line);
-		for (sregex_iterator it(line.begin(), line.end(), r), end_it; it != end_it; ++it) // match the phone numbers
-		{
+		for (sregex_iterator it(line.begin(), line.end(), r), end_it; it != end_it; ++it) 
 			if (valid(*it))			  
 			{
 				info.phones.push_back("V" + it->str());
