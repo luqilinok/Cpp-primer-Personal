@@ -58,3 +58,21 @@ ex17_31
 ex17_32
 
 如果在循环内定义resp，则其生命周期仅在循环体内，而while循环条件判断不属于循环体，因此，在进行循环条件的判定时，resp已经被销毁了，程序会产生编译错误
+
+ex17_35
+
+用hexfloat指定浮点数并打印成十六进制，用uppercase指定打印大写形式：cout<<"hexadecimal: "<<hexfloat<<uppercase<<sqrt(2.0)<<'\n'
+
+ex17_36
+
+用left指定左对齐，并用setw指定浮点数之前的文字以固定宽度显示，即可实现浮点数在一列上对齐
+cout<<left
+<<setw(20)<<"default format: "<<100*sqrt(2.0)<<'\n'
+<<setw(20)<<"scientific: "<<scientific<<100*sqrt(2.0)
+<<'\n'
+<<setw(20)<<"fixed decimal: "<<fixed<<100*sqrt(2.0)
+<<'\n'
+<<setw(20)<<"hexadecimal: "<<hexfloat<<100*sqrt(2.0)<<
+'\n'
+<<setw(20)<<"use defaults: "<<defaultfloat<<100*sqrt(2.0)
+<<"\n\n"<<right;
