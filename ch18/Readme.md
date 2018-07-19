@@ -49,3 +49,21 @@ void exercise(int *b, int *e)
 
 
 }
+
+ex18_04
+
+该try块中使用的exception、runtime_error和overflow_error是标准库中定义的异常类，它们是因继承而相关的:runtime_error类继承exception类，overflow_error类继承runtime_error类，在使用来自继承层次的异常时，catch子句应该从最低派生类型到最高派生类型排序，以便派生类型的处理代码出现在catch之前，所以上述块中，catch子句的顺序错误
+
+ex18_05
+
+int main()
+{
+	try
+	{
+		//使用C++标准库
+	}
+	catch(const exception &e){
+		cerr<<e.what()<<endl;
+	}
+	return 0;
+}
