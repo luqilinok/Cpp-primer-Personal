@@ -67,3 +67,9 @@ int main()
 	}
 	return 0;
 }
+
+ex18_06
+
+(a)throw new exceptionType()  //动态创建一个异常对象并抛出其指针
+(b)throw 8;  //被抛出的表达式为任意类型
+(c)throw 11;   //被抛出的表达式为int类型的即可
