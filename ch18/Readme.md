@@ -126,3 +126,7 @@ ex18_14
 
 将函数返回类型及函数名加上命名空间名字进行限定即可：
 mathLib::MatrixLib::matrix mathLib::MatrixLib::operator*(const matrix & ,const matrix &){/* ...*/}
+
+ex18_15
+
+一个using指示使得特定命名空间中的所有名字都成为可见的；而一个using声明只能引入特定命名空间中的一个成员
