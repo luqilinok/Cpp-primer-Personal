@@ -113,3 +113,16 @@ while(cin>>item1>>item2)
 ex18_11
 
 what函数是在catch异常后用于提取异常基本信息的虚函数，what函数是确保不会出现任何异常的，如果what函数继续产生异常，则将会产生抛出异常的死循环，所以what函数必须确保不抛出异常
+
+ex18_12
+
+将Query类以及Query_base类层次定义为命名空间chapter15的成员，并相应修改主程序中的代码（使用限定名引用这些类，或者使用相应的using声明）
+
+ex18_13
+
+通常，当需要声明局部与文件的实体时，可以使用未命名的命名空间，即在文件的最外层作用域中定义未命名的命名空间
+
+ex18_14
+
+将函数返回类型及函数名加上命名空间名字进行限定即可：
+mathLib::MatrixLib::matrix mathLib::MatrixLib::operator*(const matrix & ,const matrix &){/* ...*/}
