@@ -188,3 +188,8 @@ pb->highlight();因为ZooAnimal类中没有定义highlight操作，所以该调�
 delete pb，因为ZooAnimal类中定义了虚析构函数，所以Panda类中的析构函数也是虚函数，因此delete pb;通过虚机制调用Panda的析构函数，随着Panda析构函数的执行，依次调用Endangered、Bear和ZooAnimal的析构函数
 
 所以，通过指向Panda对象的Bear指针或ZooAnimal指针进行上述调用，将以同样的方式确定函数调用
+
+ex18_25
+
+(a)、(b)、(c)均通过基类指针调用虚函数print，这些基类指针当前都指向MI类对象，所以均调用MI::print
+(d)、(e)、(f)均通过基类指针删除对象，这些基类指针当前都指向MI类对象，所以均通过虚机制调用MI析构函数，随着MI析构函数的执行，依次调用D2、Base2、D1和Base1的析构函数
