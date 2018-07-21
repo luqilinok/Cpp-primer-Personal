@@ -146,3 +146,7 @@ ex18_18
 如果mem1是string类型的，那么编译器除了在常规作用域中查找匹配的swap函数之外，还会查找string所属的命名空间中是否有string类型的特定版本的swap函数，但是对string而言，找到的就是std::swap，完成两个字符串内容的交换
 
 如果mem1是int类型，那么因为int类型是内置类型，没有特定版本的swap，所以只会在常规作用域中进行查找，由于using声明的作用，最终会调用std::swap来完成对int的交换
+
+ex18_19
+
+如果用std::swap(v1.mem1,v2.mem1),那么将直接使用标准库版本的swap，而不会查找特定版本的swap或常规作用域中的其他swap
