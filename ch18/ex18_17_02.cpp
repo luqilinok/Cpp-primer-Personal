@@ -18,9 +18,9 @@ int main()
 	using Exercise::dvar;
 	using Exercise::limit;
 
-	double dvar = 3.1416;  //Exercise::dvar
+	double dvar = 3.1416;  //编译错误：重复定义
 	int iobj = limit + 1;  //Exercise::limit
-	++ivar;   //二义性
-	++::ivar;  //二义性
+	++ivar;   //Exercise::ivar
+	++::ivar;  //全局ivar
 	return 0;
 }
