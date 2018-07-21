@@ -150,3 +150,19 @@ ex18_18
 ex18_19
 
 如果用std::swap(v1.mem1,v2.mem1),那么将直接使用标准库版本的swap，而不会查找特定版本的swap或常规作用域中的其他swap
+
+ex18_20
+
+全局作用域中声明的函数void compute(int)与compute函数的调用匹配
+候选函数：命名空间primerLib中声明的两个compute函数（因using声明使得他们在全局作用域中可见），以及全局作用域中声明的三个compute函数
+可行函数：因为函数调用总给出的实参0为int类型，所以可行函数为以下四个函数：
+void compute(int);
+void compute(double,double=3.4)
+void compute(char*,char*=0)
+primerLib中声明的void compute(const void*)
+
+其中第一个为完全匹配，第二个需要将实参隐式转换为double类型，第三个需要将实参隐式转换为char * 类型，第四个则需要将实参隐式转换为void * 类型，所以选择第一个为最佳匹配
+
+如果将using声明置于函数f中compute调用点之前，则primerLib中的声明void compute(const void*)与compute函数的调用匹配
+候选函数：因为using声明的位置改变，则命名空间primerLib中声明的两个compute函数是候选函数（因using声明使得它们在函数f的函数体作用域中可见，并屏蔽了全局作用域中的三个compute函数）
+可行函数：因为函数调用中给出的实参是int类型的0，所以可行函数是primerLib中声明的void compute(const void*),需要将实参隐式转换为void* 类型方可匹配
