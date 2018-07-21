@@ -174,3 +174,17 @@ ex18_21
 ex18_22
 
 构造函数执行顺序：A-B-C-X-Y-Z-MI
+
+ex18_23
+
+全部的转换都是被允许的
+
+ex18_24
+
+如果我们使用一个ZooAnimal指针，则只有定义在ZooAnimal中的操作是可以使用的，所以：
+pb->print(count);通过基类指针调用虚函数，使用动态绑定，pb目前指向Panda对象，可以调用Panda::print(ostream&);
+pb->cuddle();因为ZooAnimal类中没有定义cuddle操作，所以该调用出错
+pb->highlight();因为ZooAnimal类中没有定义highlight操作，所以该调用出错
+delete pb，因为ZooAnimal类中定义了虚析构函数，所以Panda类中的析构函数也是虚函数，因此delete pb;通过虚机制调用Panda的析构函数，随着Panda析构函数的执行，依次调用Endangered、Bear和ZooAnimal的析构函数
+
+所以，通过指向Panda对象的Bear指针或ZooAnimal指针进行上述调用，将以同样的方式确定函数调用
