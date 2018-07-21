@@ -166,3 +166,11 @@ primerLib中声明的void compute(const void*)
 如果将using声明置于函数f中compute调用点之前，则primerLib中的声明void compute(const void*)与compute函数的调用匹配
 候选函数：因为using声明的位置改变，则命名空间primerLib中声明的两个compute函数是候选函数（因using声明使得它们在函数f的函数体作用域中可见，并屏蔽了全局作用域中的三个compute函数）
 可行函数：因为函数调用中给出的实参是int类型的0，所以可行函数是primerLib中声明的void compute(const void*),需要将实参隐式转换为void* 类型方可匹配
+
+ex18_21
+(a)：缺少一个继承说明符：public/private等
+(b)是错误的，因为在一个派生类列表中，同一基类只能出现一次，这里的list出现了两次
+
+ex18_22
+
+构造函数执行顺序：A-B-C-X-Y-Z-MI
