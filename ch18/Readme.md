@@ -130,3 +130,13 @@ mathLib::MatrixLib::matrix mathLib::MatrixLib::operator*(const matrix & ,const m
 ex18_15
 
 一个using指示使得特定命名空间中的所有名字都成为可见的；而一个using声明只能引入特定命名空间中的一个成员
+
+ex18_16
+
+如果命名空间Exercise的所有成员的using声明标记在位置1的地方，则Exercise中的成员在全局作用域中可见，using Exercise::ivar会导致ivar重复定义的编译错误，因为在全局作用域中也定义了一个同名变量；manip中的double dvar=3.1416声明了一个局部变量dvar，在函数体作用域中它将屏蔽Exercise::dvar,int iobj=limit+1声明了一个局部变量iobj，并用Exercise::limit+1的结果来对它进行初始化
+
+如果命名空间Exercise的所有成员的using声明方在标记为位置2的地方，则manip中的double dvar=3.1416属于对变量dvar的重复定义，会出现编译错误，int iobj=limit+1声明了一个局部变量jobj，并用Exercise::limit加1的结果对其进行初始化，++ivar访问到的是Exercise::ivar，而++::ivar访问到的是全局变量ivar
+
+如果命名空间Exercise的using指示放在标记为位置1的地方，则manip中的double dvar=3.1416声明了一个局部变量dvar,在函数体作用域中它将屏蔽Exercise::dvar;int iobj=limit+1;声明了一个局部变量iobj，并用Exercise::limit加1的结果对其进行初始化，++ivar访问到的是Exercise::ivar，而++::ivar访问的是全局变量ivar
+
+如果命名空间Exercise的using指示放在标记为位置2的地方，则Exercise的成员看来好像是声明在全局作用域中的一样，manip中的double dvar=3.1416声明了一个局部变量dvar，在函数体作用域内它将屏蔽Exercise::dvar,int iobj=limit+1声明了一个局部变量iobj，并用Exercise::limit加1的结果对其进行初始化；++ivar出现二义性错误，因为编译器无法分辨是访问Exercise::ivar还是访问全局变量ivar，而++::ivar访问的是全局变量ivar
