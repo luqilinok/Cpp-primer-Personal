@@ -140,3 +140,9 @@ ex18_16
 如果命名空间Exercise的using指示放在标记为位置1的地方，则manip中的double dvar=3.1416声明了一个局部变量dvar,在函数体作用域中它将屏蔽Exercise::dvar;int iobj=limit+1;声明了一个局部变量iobj，并用Exercise::limit加1的结果对其进行初始化，++ivar访问到的是Exercise::ivar，而++::ivar访问的是全局变量ivar
 
 如果命名空间Exercise的using指示放在标记为位置2的地方，则Exercise的成员看来好像是声明在全局作用域中的一样，manip中的double dvar=3.1416声明了一个局部变量dvar，在函数体作用域内它将屏蔽Exercise::dvar,int iobj=limit+1声明了一个局部变量iobj，并用Exercise::limit加1的结果对其进行初始化；++ivar出现二义性错误，因为编译器无法分辨是访问Exercise::ivar还是访问全局变量ivar，而++::ivar访问的是全局变量ivar
+
+ex18_18
+
+如果mem1是string类型的，那么编译器除了在常规作用域中查找匹配的swap函数之外，还会查找string所属的命名空间中是否有string类型的特定版本的swap函数，但是对string而言，找到的就是std::swap，完成两个字符串内容的交换
+
+如果mem1是int类型，那么因为int类型是内置类型，没有特定版本的swap，所以只会在常规作用域中进行查找，由于using声明的作用，最终会调用std::swap来完成对int的交换
