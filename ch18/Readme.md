@@ -212,3 +212,31 @@ ex18_28
 
 需要加限定符：foo()，cval
 不需要加限定符：bar()，ival
+
+ex18_29
+
+(a)如果定义Final对象，则创建该对象时按照如下顺序调用构造函数：
+Class();
+Base();
+D1();
+D2();
+MI();
+Class();
+Final();
+思路：首先调用虚基类Base的构造函数（导致调用Class构造函数），然后按声明次序调用非虚基类的构造函数：首先是MI(),它导致调用D1()和D2(),然后是Class(),最后调用Final类的构造函数
+
+撤销Final对象时调用析构函数的次序与调用构造函数的次序相反：
+~Final();
+~Class();
+~MI();
+~D2();
+~D1();
+~Base();
+~Class();
+
+(b)一个Fianl对象只有一个Base子对象，有两个Class子对象
+(c) 错误如下：
+       bp=new Class:不能用派生类的指针指向基类对象
+       pc=new Final:Class是Final的一个二义基类
+       pmi=pb;:不能用指向基类的指针对指向派生类的指针进行赋值
+       
