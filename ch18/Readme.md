@@ -207,3 +207,8 @@ ex18_27
 (c)dval=Base1::dval+Derived::dval;
 (d)fval=dvec.back();
 (e)sval[0]=cval;
+
+ex18_28
+
+需要加限定符：foo()，cval
+不需要加限定符：bar()，ival
