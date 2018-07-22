@@ -193,3 +193,17 @@ ex18_25
 
 (a)、(b)、(c)均通过基类指针调用虚函数print，这些基类指针当前都指向MI类对象，所以均调用MI::print
 (d)、(e)、(f)均通过基类指针删除对象，这些基类指针当前都指向MI类对象，所以均通过虚机制调用MI析构函数，随着MI析构函数的执行，依次调用D2、Base2、D1和Base1的析构函数
+
+ex18_26
+
+因为mi.print(42);通过MI类对象调用print函数，编译器通过名字查找，确定调用的是MI类中定义的print函数，但是MI类中定义的print函数需要std::vector<double>类型的参数，所以该调用是错误的
+
+修改，将MI中print的声明改为void print(int);,该print调用即可正确编译和执行
+
+ex18_27
+
+(a)MI::foo中可见的名字有：ival、dvec、fval、dval、sval、ival、dval、cval和print
+(b)Dval和print是继承自多个基类的
+(c)dval=Base1::dval+Derived::dval;
+(d)fval=dvec.back();
+(e)sval[0]=cval;
