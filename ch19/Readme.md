@@ -21,3 +21,9 @@ ex19_08
 typeid(* qb1)==typeid(* qb2)
 判断该类型是否是AndQuery的typeid表达式如下:
 typeid(* qb1)==typeid(AndQuery)
+
+ex19_10
+
+（a）class A*:因为pa是指向A类对象的指针，其类型为A*
+（b）class A* :因为ra是A类对象的引用，表达式&ra求得ra的地址，该地址的类型是A*
+（c）class A ：因为ra是A类对象的引用，其类型为A
