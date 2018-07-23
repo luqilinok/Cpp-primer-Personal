@@ -14,3 +14,10 @@ ex19_03
 ex19_05
 
 如果无法为基类增加虚函数，就可以使用dynamic_cast代替虚函数
+
+ex19_08
+
+假设指针qb1和qb2的类型为Query_base*,则判断两个Query_base指针是否指向相同类型的typeid表达式如下：
+typeid(* qb1)==typeid(* qb2)
+判断该类型是否是AndQuery的typeid表达式如下:
+typeid(* qb1)==typeid(AndQuery)
