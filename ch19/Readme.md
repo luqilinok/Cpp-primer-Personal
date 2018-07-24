@@ -70,3 +70,19 @@ ex19_17
 using pmf1=char(Screen::* ) const;
 using pmf2=char(Screen::* )(Screen::index,Screen::index) const;
 using pmf3=Screen&(Screen::* )(Screen::Directions);
+
+ex19_19
+
+由题意可以写出如下代码：
+
+bool check_value(Sales_data &sd,double t)
+{
+  return sd.avg_price()>t;
+}
+
+vector<Sales_data>::iterator find_first_high(vector<Sales_data> &vsd,double t)
+{
+  auto f=bind(check_value,_ 1,t);
+  
+  return find_if(vsd.begin(),vsd.end(),f);
+}
