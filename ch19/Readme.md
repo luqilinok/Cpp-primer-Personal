@@ -50,3 +50,9 @@ pScreen->* pm;
 ex19_13
 Sales_data类的bookNo成员是一个数据成员，其类型为std::string，所以可以表示Sales_data类的bookNo成员的指针的类型为：
 std::string Sales_data::* ;
+
+ex19_14
+
+这段代码是合法的：
+auto pmf=&Screen::get_cursor //pmf是一个指向Screen成员函数的指针
+pmf=&Screen::get;  //pmf此时指向get,get的版本是根据pmf的类型推断出来的，即没有参数，返回char的版本
