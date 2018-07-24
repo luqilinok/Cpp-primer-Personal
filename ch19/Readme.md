@@ -46,3 +46,7 @@ myScreen.* pm;
 Screen * pScreen;
 则可以这样通过成员指针pm获取Screen::cursor的值
 pScreen->* pm;
+
+ex19_13
+Sales_data类的bookNo成员是一个数据成员，其类型为std::string，所以可以表示Sales_data类的bookNo成员的指针的类型为：
+std::string Sales_data::* ;
