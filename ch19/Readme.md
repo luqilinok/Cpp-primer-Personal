@@ -56,3 +56,17 @@ ex19_14
 这段代码是合法的：
 auto pmf=&Screen::get_cursor //pmf是一个指向Screen成员函数的指针
 pmf=&Screen::get;  //pmf此时指向get,get的版本是根据pmf的类型推断出来的，即没有参数，返回char的版本
+
+ex19_15
+
+普通函数指针和指向成员函数的指针的区别在于：在成员函数和指向该成员的指针之间不存在自动转换的规则（必须使用&符号，显示的取地址）
+
+ex19_16
+
+using Avg=double(Sales_data::* ) () const;
+
+ex19_17
+
+using pmf1=char(Screen::* ) const;
+using pmf2=char(Screen::* )(Screen::index,Screen::index) const;
+using pmf3=Screen&(Screen::* )(Screen::Directions);
