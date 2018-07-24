@@ -27,3 +27,22 @@ ex19_10
 （a）class A*:因为pa是指向A类对象的指针，其类型为A*
 （b）class A* :因为ra是A类对象的引用，表达式&ra求得ra的地址，该地址的类型是A*
 （c）class A ：因为ra是A类对象的引用，其类型为A
+
+ex19_11
+
+指向数据成员的指针除了给出成员本身的类型外，还必须给出所属类的类型
+
+
+ex19_12
+
+指向Screen类的cursor成员的成员指针pm可定义如下：
+pos Screen::* pm = &Screen::cursor;
+可以使用成员指针解引用操作符(.* )从对象或引用获取成员，使用成员指针箭头操作符(->* )通过对象的指针获取成员
+假设有如下对象定义：
+Screen myScreen;
+则可以这样通过成员指针pm获取Screen::cursor的值：
+myScreen.* pm;
+假设有如下对象指针定义：
+Screen * pScreen;
+则可以这样通过成员指针pm获取Screen::cursor的值
+pScreen->* pm;
