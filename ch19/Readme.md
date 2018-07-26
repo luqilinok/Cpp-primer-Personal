@@ -86,3 +86,10 @@ vector<Sales_data>::iterator find_first_high(vector<Sales_data> &vsd,double t)
   
   return find_if(vsd.begin(),vsd.end(),f);
 }
+
+ex19_26
+
+第一个声明指出：compute是一个用C语言编写的函数，该函数接受一个int* 类型以及一个int类型的形参，返回int型值
+第二个声明指出：compute是一个用C语言编写的函数，该函数接受一个double* 类型以及一个double类型的形参，返回double类型的值
+
+如果这两个声明单独出现，则是合法的；如果二者同时出现，则是不合法的，因为这两个compute函数构成了函数重载，而C语言是不支持函数重载的
