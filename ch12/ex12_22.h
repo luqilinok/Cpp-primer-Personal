@@ -98,11 +98,4 @@ private:
 	}
 };
 
-ConstStrBlobPtr::ConstStrBlobPtr()
-{
-}
-
-ConstStrBlobPtr::~ConstStrBlobPtr()
-{
-}
 #endif // !EX12_22_H
