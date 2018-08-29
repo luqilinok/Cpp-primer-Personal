@@ -29,7 +29,7 @@ public:
 	void pop_back()
 	{
 		check(0, "pop_back on empty StrBlob");
-		data - < pop_back();
+		data->pop_back();
 	}
 
 	string& front()
